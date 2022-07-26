@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->boolean('active')->nullable()->default(1)->comment('null = inactive and 1 = active'); 
+            $table->unsignedInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
         });

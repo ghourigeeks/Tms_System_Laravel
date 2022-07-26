@@ -19,6 +19,7 @@ class CreatePaymentMethodsTable extends Migration
             $table->string('public_key');
             $table->string('private_key');
             $table->boolean('active')->nullable()->default(1)->comment('null = inactive and 1 = active'); 
+            $table->unsignedInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
         });

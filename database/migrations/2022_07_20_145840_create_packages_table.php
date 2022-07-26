@@ -24,6 +24,7 @@ class CreatePackagesTable extends Migration
             $table->boolean('barcode')->comment('generate barcode null = false and 1 = true'); 
             $table->boolean('qrcode')->comment('generate qrcode null = false and 1 = true'); 
             $table->boolean('active')->default(1)->comment('null = inactive and 1 = active'); 
+            $table->unsignedInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
         });
