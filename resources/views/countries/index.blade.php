@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Packages')
+@section('title','Countries')
 @section('content')
     @include( '../sweet_script')
     <div class="page-inner">
@@ -12,8 +12,8 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
-                            @can('package-create')
-                                <a  href="{{ route('packages.create') }}" class="btn btn-primary btn-xs ml-auto">
+                            @can('country-create')
+                                <a  href="{{ route('countries.create') }}" class="btn btn-primary btn-xs ml-auto">
                                 <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
@@ -25,8 +25,6 @@
                                     <tr>
                                         <th width="5%">#</th>
                                         <th>Name</th>
-                                        <th>Amount</th>
-                                         <th>Box Limit</th>
                                         <th width="8%"> Active</th>
                                         <th width="10%" >Action</th>
                                     </tr>
@@ -47,13 +45,11 @@
                     "processing": true,
                     "serverSide": false,
                     "select":true,
-                    "ajax": "{{ url('lst_package') }}",
+                    "ajax": "{{ url('lst_country') }}",
                     "method": "GET",
                     "columns": [
                         {"data": "srno"},
                         {"data": "name"},
-                        {"data": "amount"},
-                        {"data": "box_limit"},
                         {"data": "active",orderable:false,searchable:false},
                         {"data": "action",orderable:false,searchable:false}
 

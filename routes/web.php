@@ -18,6 +18,8 @@
 	use App\Http\Controllers\Payment_methodController;
 	use App\Http\Controllers\PackageController;
 	use App\Http\Controllers\CategoryController;
+	use App\Http\Controllers\RegionController;
+	use App\Http\Controllers\CountryController;
 
 	
 	Auth::routes();
@@ -137,6 +139,20 @@
 		Route::get('/lst_package', [PackageController::class, 'list']);
 		Route::delete('/del_package', [PackageController::class, 'destroy']);
 	// BEGIN::package
+
+
+	// BEGIN::region
+		Route::resource('/regions', RegionController::class);
+		Route::get('/lst_region', [RegionController::class, 'list']);
+		Route::delete('/del_region', [RegionController::class, 'destroy']);
+	// BEGIN::region
+
+
+	// BEGIN::country
+		Route::resource('/countries', CountryController::class);
+		Route::get('/lst_country', [CountryController::class, 'list']);
+		Route::delete('/del_country', [CountryController::class, 'destroy']);
+	// BEGIN::country
 
 
 

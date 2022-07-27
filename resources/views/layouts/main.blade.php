@@ -222,6 +222,20 @@
 							</a>
 						</li>
 
+						<li class="nav-item @if('regions' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/regions')}}">
+								<i class="fas fa-globe"></i>
+								<p>Region</p>
+							</a>
+						</li>
+
+					   <li class="nav-item @if('countries' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/countries')}}">
+								<i class="fas fa-flag"></i>
+								<p>Country</p>
+							</a>
+						</li>
+
 												
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
@@ -245,9 +259,6 @@
 								<p>Roles</p>
 							</a>
 						</li>
-
-						
-
 					</ul>
 				</div>
 			</div>

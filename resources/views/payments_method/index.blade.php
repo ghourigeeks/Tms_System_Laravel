@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Payment Method')
+@section('title','Payment Methods')
 @section('content')
     @include( '../sweet_script')
     <div class="page-inner">
@@ -14,7 +14,7 @@
                             <h4 class="card-title">Manage @yield('title')</h4>
                             @can('payment_methods-create')
                                 <a  href="{{ route('payments.create') }}" class="btn btn-primary btn-xs ml-auto">
-                                <i class="fa fa-plus"></i>New</a>
+                                <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
                     </div>

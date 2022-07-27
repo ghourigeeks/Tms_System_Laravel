@@ -78,6 +78,19 @@ class PermissionSeeder extends Seeder
             'package-edit',
             'package-delete',
 
+
+            'region-list',
+            'region-create',
+            'region-edit',
+            'region-delete',
+
+
+            'country-list',
+            'country-create',
+            'country-edit',
+            'country-delete',
+
+
             'category-list',
             'category-create',
             'category-edit',
