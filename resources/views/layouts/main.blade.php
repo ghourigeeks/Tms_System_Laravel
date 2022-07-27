@@ -21,7 +21,7 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/azzara.min.css') }}">
 

@@ -8,6 +8,7 @@ class PermissionSeeder extends Seeder
 {
     public function run()
     {
+        
         $permissions = [
             
             'permission-list',
@@ -75,13 +76,20 @@ class PermissionSeeder extends Seeder
             'package-list',
             'package-create',
             'package-edit',
-            'package-delete'
+            'package-delete',
+
+            'category-list',
+            'category-create',
+            'category-edit',
+            'category-delete'
+
 
             
 
-         ];
-         foreach ($permissions as $permission) {
+        ];
+
+        foreach ($permissions as $permission) {
               Permission::create(['name' => $permission]);
-         }
+        }
      }
 }

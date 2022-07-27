@@ -17,8 +17,9 @@
 	use App\Http\Controllers\Complaint_tagController;
 	use App\Http\Controllers\Payment_methodController;
 	use App\Http\Controllers\PackageController;
+	use App\Http\Controllers\CategoryController;
 
-
+	
 	Auth::routes();
 
 	Route::get('/', function () {
@@ -68,6 +69,13 @@
 		Route::resource('/provinces', ProvinceController::class);
 		Route::get('/lst_province', [ProvinceController::class, 'list']);
 		Route::delete('/del_province', [ProvinceController::class, 'destroy']);
+	// BEGIN::Province
+
+
+	// BEGIN::Province
+		Route::resource('/categories', CategoryController::class);
+		Route::get('/lst_category', [CategoryController::class, 'list']);
+		Route::delete('/del_category', [CategoryController::class, 'destroy']);
 	// BEGIN::Province
 
 	
