@@ -19,13 +19,13 @@ class CreatePackagesTable extends Migration
             $table->unsignedInteger('amount')->default(0)->comment('package subcription amount');
             $table->unsignedInteger('box_limit')->default(0)->comment('limit to create box');
             $table->unsignedInteger('inventory_limit')->default(0)->comment('limit to create inventory');
-            $table->boolean('add_to_mp')->comment('mp = marketplace null = false and 1 = true'); 
-            $table->boolean('ibeacon')->comment('assign ibeacon null = false and 1 = true'); 
-            $table->boolean('barcode')->comment('generate barcode null = false and 1 = true'); 
-            $table->boolean('qrcode')->comment('generate qrcode null = false and 1 = true'); 
+            $table->boolean('add_to_mp')->default(1)->comment('mp = marketplace null = false and 1 = true'); 
+            $table->boolean('ibeacon')->default(1)->comment('assign ibeacon null = false and 1 = true'); 
+            $table->boolean('barcode')->default(1)->comment('generate barcode null = false and 1 = true'); 
+            $table->boolean('qrcode')->default(1)->comment('generate qrcode null = false and 1 = true'); 
             $table->boolean('active')->default(1)->comment('null = inactive and 1 = active'); 
             $table->unsignedInteger('created_by');
-            $table->softDeletes();
+            $table->softDeletes();  
             $table->timestamps();
         });
     }

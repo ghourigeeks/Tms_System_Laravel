@@ -16,6 +16,8 @@
 	use App\Http\Controllers\PermissionController;
 	use App\Http\Controllers\Complaint_tagController;
 	use App\Http\Controllers\Payment_methodController;
+	use App\Http\Controllers\PackageController;
+
 
 	Auth::routes();
 
@@ -68,6 +70,7 @@
 		Route::delete('/del_province', [ProvinceController::class, 'destroy']);
 	// BEGIN::Province
 
+	
 
 	// BEGIN::city
 		Route::resource('/cities', CityController::class);
@@ -87,11 +90,6 @@
 		Route::delete('/del_status', [StatusController::class, 'destroy']);
 	// BEGIN::statuses
 
-	// BEGIN::payment_methods
-		Route::resource('/payment_methods', Payment_methodController::class);
-		Route::get('/lst_payment_method', [Payment_methodController::class, 'list']);
-		Route::delete('/del_payment_method', [Payment_methodController::class, 'destroy']);
-	// BEGIN::payment_methods
 
 	
 	// BEGIN::complaint_tags
@@ -117,6 +115,20 @@
 		// Route::get('/lst_permission', [PermissionController::class, 'list']);
 		// Route::delete('/del_permission', [PermissionController::class, 'destroy']);
 	// BEGIN::permissions
+
+
+	// Itag URLS
+	// BEGIN::Payment
+		Route::resource('/payments', Payment_methodController::class);
+		Route::get('/lst_payment', [Payment_methodController::class, 'list']);
+		Route::delete('/del_payment', [Payment_methodController::class, 'destroy']);
+	// BEGIN::Payment
+
+	// BEGIN::package
+		Route::resource('/packages', PackageController::class);
+		Route::get('/lst_package', [PackageController::class, 'list']);
+		Route::delete('/del_package', [PackageController::class, 'destroy']);
+	// BEGIN::package
 
 
 

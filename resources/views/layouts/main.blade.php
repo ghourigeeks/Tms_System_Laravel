@@ -208,60 +208,21 @@
 							<h4 class="text-section">Customize</h4>
 						</li>
 
-						
-						<li class="nav-item @if('ratings' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/ratings')}}">
-								<i class="fas fa-star"></i>
-								<p>Ratings</p>
+						<li class="nav-item @if('payments' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('payments')}}">
+								<i class="fab fa-cc-paypal"></i>
+								<p>Payments Methods</p>
 							</a>
 						</li>
 
-
-
-						<li class="nav-item @if('cities' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/cities')}}">
-								<i class="fas fa-building"></i>
-								<p>Cities</p>
+						<li class="nav-item @if('packages' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/packages')}}">
+								<i class="fas fa-box"></i>
+								<p>Packages</p>
 							</a>
 						</li>
 
-						
-						<li class="nav-item @if('provinces' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/provinces')}}">
-								<i class="fas fa-building"></i>
-								<p>Provinces</p>
-							</a>
-						</li>
-
-						
-						<li class="nav-item @if('reasons' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/reasons')}}">
-								<i class="fas fa-info"></i>
-								<p>Reasons</p>
-							</a>
-						</li>
-
-						<li class="nav-item @if('statuses' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/statuses')}}">
-								<i class="fas fa-check"></i>
-								<p>Statuses</p>
-							</a>
-						</li>
-
-						<!-- <li class="nav-item @if('payment_methods' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/payment_methods')}}">
-								<i class="fas fa-credit-card"></i>
-								<p>Payment method</p>
-							</a>
-						</li> -->
-
-						<li class="nav-item @if('complaint_tags' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/complaint_tags')}}">
-								<i class="fas fa-envelope"></i>
-								<p>Complaint Tags</p>
-							</a>
-						</li>
-						
+												
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>

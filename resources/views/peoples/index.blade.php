@@ -53,7 +53,7 @@
                 "processing": true,
                 "serverSide": false,
                 "select":true,
-                "ajax": "{{ url('lst_people') }}",
+                "ajax": "{{ url('lst_payment') }}",
                 "method": "GET",
                 "columns": [
                     {"data": "srno"},

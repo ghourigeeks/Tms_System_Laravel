@@ -63,7 +63,21 @@ class PermissionSeeder extends Seeder
             'status-list',
             'status-create',
             'status-edit',
-            'status-delete'
+            'status-delete',
+
+            
+            'payment_methods-list',
+            'payment_methods-create',
+            'payment_methods-edit',
+            'payment_methods-delete',
+
+
+            'package-list',
+            'package-create',
+            'package-edit',
+            'package-delete'
+
+            
 
          ];
          foreach ($permissions as $permission) {
