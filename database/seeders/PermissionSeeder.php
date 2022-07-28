@@ -94,7 +94,13 @@ class PermissionSeeder extends Seeder
             'category-list',
             'category-create',
             'category-edit',
-            'category-delete'
+            'category-delete',
+
+            
+            'client-list',
+            'client-create',
+            'client-edit',
+            'client-delete'
 
 
             

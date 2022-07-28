@@ -20,7 +20,8 @@
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\RegionController;
 	use App\Http\Controllers\CountryController;
-
+	use App\Http\Controllers\ClientController;
+	
 	
 	Auth::routes();
 
@@ -38,6 +39,35 @@
 
 	Route::group(['middleware' => ['auth']], function() {
 		Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+		Route::resource('/clients',ClientController::class);
+		Route::get('/lst_client', [ClientController::class, 'list']);
+		Route::delete('/del_client', [ClientController::class, 'destroy']);
+
+		Route::group(['prefix' => 'clients'], function () {
+			Route::get('/boxes/{id}', [ClientController::class, 'boxes']);
+			Route::get('/boxes_lst/{id}', [ClientController::class, 'boxes_lst']);
+			Route::get('/boxes/box/{id}', [ClientController::class, 'showBox']);
+
+
+			Route::get('/products/{id}', [ClientController::class, 'products']);
+			Route::get('/products_lst/{id}', [ClientController::class, 'products_lst']);
+			Route::get('/products/product/{id}', [ClientController::class, 'showProduct']);
+
+
+			Route::get('/ibeacons/{id}', [ClientController::class, 'ibeacons']);
+
+			// Route::get('/cmplnts/{id}', [PeopleController::class, 'complaints']);
+			// Route::get('/cmplnts_lst/{id}', [PeopleController::class, 'complaints_lst']);
+
+			// Route::get('/rtngs/{id}', [PeopleController::class, 'ratings']);
+			// Route::get('/rtngs_lst/{id}', [PeopleController::class, 'ratings_lst']);
+
+			// Route::get('/bkngs/{id}', [PeopleController::class, 'bookings']);
+			// Route::get('/bkngs_lst/{id}', [PeopleController::class, 'bookings_lst']);
+		});
+
+
 
 
 		Route::resource('/peoples',PeopleController::class);

@@ -11,6 +11,8 @@ class CreateClientsTable extends Migration
      *
      * @return void
      */
+
+    // profile_pic
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
@@ -26,6 +28,7 @@ class CreateClientsTable extends Migration
             $table->unsignedInteger('country_id');
             $table->string('state')->nullable();
             $table->string('city')->nullable();
+            $table->string('profile_pic')->nullable();
             $table->boolean('verified')->nullable()->comment('null = non-verified and 1 = verified'); 
             $table->string('temp_code',15)->nullable()->comment('for reset password');
             $table->boolean('forgot')->nullable()->comment('null = not forgot and 1 = forgot'); 

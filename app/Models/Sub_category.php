@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sub_category extends Model
 {
-    use HasFactory, SoftDeletes;
-    protected $dates = ['deleted_at'];
+    use HasFactory;
+    // protected $dates = ['deleted_at'];
     protected $fillable = [
         'name',
         'cat_id'
