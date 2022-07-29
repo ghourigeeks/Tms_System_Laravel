@@ -177,7 +177,7 @@ class ClientController extends Controller
 
     public function create()
     {
-        $clients        = Client::pluck('name','id')->all();
+        $clients        = Client::pluck('fullname','id')->all();
         return view('clients.create',compact('clients'));
     }
 

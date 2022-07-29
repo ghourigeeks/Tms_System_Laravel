@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Client;
+use Carbon\Carbon;
 
 class Complaint extends Model
 {
@@ -21,5 +23,16 @@ class Complaint extends Model
     public function getActiveAttribute($value)
     {
         return ($value == 1) ? "Active" : "Inactive";
+    }
+    public function getCreatedAtAttribute($value)
+    {
+        if($value){
+            return Carbon::parse($value)->format('D - h:i A');
+        }    
+    }
+    public function Clients()
+    {
+        $clients = $this->belongsTo(Client::class,'client_id','id');
+        return $clients;
     }
 }

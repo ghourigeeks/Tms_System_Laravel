@@ -15,11 +15,11 @@ class ComplaintRequest extends FormRequest
     {
         if((isset($this->action)) && (($this->action) == "store") ){
             return [
-                'name' => 'required|min:3|unique:complaints,name',
+                'response' => 'required|min:3',
             ];
           }else{
             return [
-                'name' => ['min:3','required', Rule::unique('complaints')->ignore($this->complaint)]
+                'response' => 'min:3|required'
             ];
         }
     }

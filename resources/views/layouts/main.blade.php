@@ -238,6 +238,13 @@
 								<p>People</p>
 							</a>
 						</li>
+
+						<li class="nav-item @if('complaints' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/complaints')}}">
+								<i class="fa fa-solid fa-comment"></i>
+								<p>Complaints</p>
+							</a>
+						</li>
 					
 
 						<li class="nav-section">
@@ -273,6 +280,21 @@
 							<a  href="{{url('/countries')}}">
 								<i class="fas fa-flag"></i>
 								<p>Country</p>
+							</a>
+						</li>
+
+						<li class="nav-item @if('categories' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('categories')}}">
+								<i class="fas fa-list-alt"></i>
+								<p>Categories</p>
+							</a>
+						</li>
+
+
+						<li class="nav-item @if('faqs' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('faqs')}}">
+								<i class="fa fa-question-circle"></i>
+								<p>FAQ's</p>
 							</a>
 						</li>
 

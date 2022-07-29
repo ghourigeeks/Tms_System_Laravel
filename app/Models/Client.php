@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Complaint;
 
 class Client extends Authenticatable
 {
@@ -63,5 +64,9 @@ class Client extends Authenticatable
     public function getCityAttribute($value)
     {
         return ucwords($value);
+    }
+    public function complaints()
+    {
+        return $this->belongsTo(Complaint::class,'client_id','id');
     }
 }

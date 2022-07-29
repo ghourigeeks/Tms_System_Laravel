@@ -122,11 +122,10 @@ class PermissionSeeder extends Seeder
             'ibeacon-edit',
             'ibeacon-delete',
 
-
-
-
-
-            
+            'faq-list',
+            'faq-create',
+            'faq-edit',
+            'faq-delete',
 
         ];
 
