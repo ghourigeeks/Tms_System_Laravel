@@ -10,7 +10,6 @@
 	use App\Http\Controllers\RatingController;
 	use App\Http\Controllers\CaptainController;
 	use App\Http\Controllers\ProvinceController;
-	use App\Http\Controllers\ComplaintController;
 	use App\Http\Controllers\PassengerController;
 	use App\Http\Controllers\TwilioSMSController;
 	use App\Http\Controllers\PermissionController;
@@ -24,6 +23,7 @@
 	use App\Http\Controllers\ProductController;
 	use App\Http\Controllers\BoxController;
 	use App\Http\Controllers\IbeaconController;
+	use App\Http\Controllers\ComplaintController;
 	
 	
 	Auth::routes();
@@ -62,14 +62,6 @@
 			Route::get('/ibeacons_lst/{id}', [ClientController::class, 'ibeacons_lst']);
 			Route::get('/ibeacons/ibeacon/{id}', [ClientController::class, 'showIbeacon']);
 
-			// Route::get('/cmplnts/{id}', [PeopleController::class, 'complaints']);
-			// Route::get('/cmplnts_lst/{id}', [PeopleController::class, 'complaints_lst']);
-
-			// Route::get('/rtngs/{id}', [PeopleController::class, 'ratings']);
-			// Route::get('/rtngs_lst/{id}', [PeopleController::class, 'ratings_lst']);
-
-			// Route::get('/bkngs/{id}', [PeopleController::class, 'bookings']);
-			// Route::get('/bkngs_lst/{id}', [PeopleController::class, 'bookings_lst']);
 		});
 
 
@@ -134,7 +126,7 @@
 		Route::get('/lst_status', [StatusController::class, 'list']);
 		Route::delete('/del_status', [StatusController::class, 'destroy']);
 	// BEGIN::statuses
-
+	
 
 	
 	// BEGIN::complaint_tags
@@ -163,6 +155,15 @@
 
 
 	// Itag URLS
+
+	// BEGIN::complaint_tags
+		Route::resource('/complaints', ComplaintController::class);
+		// Route::get('/lst_complaint_tags', [Complaint_tagController::class, 'list']);
+		// Route::delete('/del_complaint_tag', [Complaint_tagController::class, 'destroy']);
+	// BEGIN::complaint_tags
+
+
+
 	// BEGIN::Payment
 		Route::resource('/payments', Payment_methodController::class);
 		Route::get('/lst_payment', [Payment_methodController::class, 'list']);
