@@ -73,8 +73,7 @@ class ClientController extends Controller
 
     public function boxes($id)
     {
-        $data       = Box::where('boxes.client_id', $id)
-                        ->first();
+        $data       = Box::where('boxes.client_id', $id)->first();
 
         if((empty($data))){
             return Redirect::back()->withErrors(['msg' => 'No box found!']);
@@ -84,13 +83,9 @@ class ClientController extends Controller
 
     public function boxes_lst($client_id)
     {
-        $data   = Box::orderBy('boxes.id')
-                    ->where('boxes.client_id',$client_id)
-                    ->get();
-
+        $data   = Box::where('boxes.client_id',$client_id)->get();
         return 
             DataTables::of($data)
-                
                 ->addColumn('action',function($data){
                     return '<div class="btn-group btn-group">
                                 <a class="btn btn-info btn-xs" href="box/'.$data->id.'">
@@ -110,12 +105,9 @@ class ClientController extends Controller
         return view('clients.box',compact('data'));
     }
 
-
-
     public function products($id)
     {
-        $data       = Product::where('products.client_id', $id)
-                        ->first();
+        $data       = Product::where('products.client_id', $id)->first();
 
         if((empty($data))){
             return Redirect::back()->withErrors(['msg' => 'No product found!']);
@@ -125,13 +117,9 @@ class ClientController extends Controller
 
     public function products_lst($client_id)
     {
-        $data   = Product::orderBy('products.id')
-                    ->where('products.client_id',$client_id)
-                    ->get();
-
+        $data   = Product::where('products.client_id',$client_id)->get();
         return 
             DataTables::of($data)
-                
                 ->addColumn('action',function($data){
                     return '<div class="btn-group btn-group">
                                 <a class="btn btn-info btn-xs" href="product/'.$data->id.'">
@@ -153,19 +141,42 @@ class ClientController extends Controller
 
     public function ibeacons($id)
     {
-        $data       = Ibeacon::where('ibeacons.client_id', $id)
-                        ->first();
+        $data       = Ibeacon::where('ibeacons.client_id', $id)->first();
 
         if((empty($data))){
             return Redirect::back()->withErrors(['msg' => 'No ibeacon found!']);
         }
         return view('clients.ibeacons',compact('data','id'));
     }
+    
+    public function ibeacons_lst($client_id)
+    {
+        $data   = Ibeacon::where('ibeacons.client_id',$client_id)->get();
+
+        return 
+            DataTables::of($data)
+                ->addColumn('action',function($data){
+                    return '<div class="btn-group btn-group">
+                                <a class="btn btn-info btn-xs" href="ibeacon/'.$data->id.'">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>';
+                })
+
+                ->addColumn('srno','')
+                ->rawColumns(['srno','','action'])
+                ->make(true);
+    }
+
+    public function showIbeacon($ibeacon_id)
+    {
+        $data      = Ibeacon::findorFail($ibeacon_id);
+        return view('clients.ibeacon',compact('data'));
+    }
 
 
     public function create()
     {
-
         $clients        = Client::pluck('name','id')->all();
         return view('clients.create',compact('clients'));
     }
@@ -178,15 +189,14 @@ class ClientController extends Controller
         // store validated data
         $data         = Client::create($request->all());
         return response()->json(['success'=>$request['name']. ' added successfully.']);
-      
     }
 
-     public function show($id)
+    public function show($id)
     {
         $data           = Client::findorFail($id);
-        $boxes          = Box::where('client_id', $id)->where('active', 1)->count();
-        $products       = Product::where('client_id', $id)->where('active', 1)->count();
-        $ibeacons       = Ibeacon::where('client_id', $id)->where('active', 1)->count();
+        $boxes          = Box::where('client_id', $id)->count();
+        $products       = Product::where('client_id', $id)->count();
+        $ibeacons       = Ibeacon::where('client_id', $id)->count();
 
         return view('clients.show',compact(
                                             'data',

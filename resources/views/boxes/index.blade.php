@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Categories')
+@section('title','Boxes')
 @section('content')
     @include( '../sweet_script')
     <div class="page-inner">
@@ -12,9 +12,9 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
-                            @can('category-create')
-                                <a  href="{{ route('categories.create') }}" class="btn btn-primary btn-xs ml-auto">
-                                <i class="fa fa-plus"></i>New</a>
+                            @can('box-create')
+                                <a  href="{{ route('boxes.create') }}" class="btn btn-primary btn-xs ml-auto">
+                                <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
                     </div>
@@ -24,7 +24,10 @@
                                 <thead>
                                     <tr>
                                         <th width="5%">#</th>
+                                        <th>Client name</th>
                                         <th>Name</th>
+                                         <th>Price</th>
+                                         <th>Bar code</th>
                                         <th width="8%"> Active</th>
                                         <th width="10%" >Action</th>
                                     </tr>
@@ -45,11 +48,14 @@
                     "processing": true,
                     "serverSide": false,
                     "select":true,
-                    "ajax": "{{ url('list_category') }}",
+                    "ajax": "{{ url('lst_box') }}",
                     "method": "GET",
                     "columns": [
                         {"data": "srno"},
+                        {"data": "client_id"},
                         {"data": "name"},
+                        {"data": "price"},
+                        {"data": "barcode"},
                         {"data": "active",orderable:false,searchable:false},
                         {"data": "action",orderable:false,searchable:false}
 

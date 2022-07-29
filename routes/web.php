@@ -21,6 +21,9 @@
 	use App\Http\Controllers\RegionController;
 	use App\Http\Controllers\CountryController;
 	use App\Http\Controllers\ClientController;
+	use App\Http\Controllers\ProductController;
+	use App\Http\Controllers\BoxController;
+	use App\Http\Controllers\IbeaconController;
 	
 	
 	Auth::routes();
@@ -56,6 +59,8 @@
 
 
 			Route::get('/ibeacons/{id}', [ClientController::class, 'ibeacons']);
+			Route::get('/ibeacons_lst/{id}', [ClientController::class, 'ibeacons_lst']);
+			Route::get('/ibeacons/ibeacon/{id}', [ClientController::class, 'showIbeacon']);
 
 			// Route::get('/cmplnts/{id}', [PeopleController::class, 'complaints']);
 			// Route::get('/cmplnts_lst/{id}', [PeopleController::class, 'complaints_lst']);
@@ -170,19 +175,41 @@
 		Route::delete('/del_package', [PackageController::class, 'destroy']);
 	// BEGIN::package
 
-
 	// BEGIN::region
 		Route::resource('/regions', RegionController::class);
 		Route::get('/lst_region', [RegionController::class, 'list']);
 		Route::delete('/del_region', [RegionController::class, 'destroy']);
 	// BEGIN::region
 
-
 	// BEGIN::country
 		Route::resource('/countries', CountryController::class);
 		Route::get('/lst_country', [CountryController::class, 'list']);
 		Route::delete('/del_country', [CountryController::class, 'destroy']);
 	// BEGIN::country
+
+	// BEGIN::categories
+		Route::resource('/products', ProductController::class);
+		Route::get('/lst_product', [ProductController::class, 'list']);
+		Route::delete('/del_product', [ProductController::class, 'destroy']);
+	// BEGIN::categories
+
+	// BEGIN::Box
+		Route::resource('/boxes', BoxController::class);
+		Route::get('/lst_box', [BoxController::class, 'list']);
+		Route::delete('/del_box', [BoxController::class, 'destroy']);
+	// BEGIN::Box
+
+	// BEGIN::Ibeacon
+		Route::resource('/ibeacons', IbeaconController::class);
+		Route::get('/lst_ibeacon', [IbeaconController::class, 'list']);
+		Route::delete('/del_ibeacon', [IbeaconController::class, 'destroy']);
+	// BEGIN::Ibeacon
+
+	// BEGIN::Categories
+		Route::resource('/categories', CategoryController::class);
+		Route::get('/list_category', [CategoryController::class, 'list_category']);
+		Route::delete('/del_category', [CategoryController::class, 'del_category']);
+	// END::Categories
 
 
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Sub_category;
 
 class Category extends Model
 {
@@ -19,6 +20,11 @@ class Category extends Model
     public function getActiveAttribute($value)
     {
         return ($value == 1) ? "Active" : "Inactive";
+    }
+
+    public function subCategory()
+    {
+        return $this->hasMany(Sub_category::class,'cat_id','id');
     }
 
     public function getNameAttribute($value)

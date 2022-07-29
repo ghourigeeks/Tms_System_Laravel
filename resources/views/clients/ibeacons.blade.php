@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title"> @yield('title') Boxes </h4>
+                        <h4 class="card-title"> @yield('title') Ibeacon devices </h4>
                         <a  href="{{ url('clients')}}/{{$id}}" class="btn btn-primary btn-xs ml-auto">
                             <i class="fas fa-arrow-left"></i>
                         </a>
@@ -25,10 +25,7 @@
                             <thead>
                                 <tr>
                                     <th width="5%">#</th>
-                                    <th>Box</th>
-                                    <th>Price </th>
-                                    <th>QRcode</th>
-                                    <th>Barcode </th>
+                                    <th>Serial#</th>
                                     <th width="10%" >Action</th>
                                 </tr>
                             </thead>
@@ -48,14 +45,11 @@
                 "processing": true,
                 "serverSide": false,
                 "select":true,
-                "ajax": "{{ url('clients') }}/boxes_lst/{{$id}}",
+                "ajax": "{{ url('clients') }}/ibeacons_lst/{{$id}}",
                 "method": "GET",
                 "columns": [
                     {"data": "srno"},
-                    {"data": "name"},
-                    {"data": "price"},
-                    {"data": "qrcode"},
-                    {"data": "barcode"},
+                    {"data": "serial_no"},
                     {"data": "action",orderable:false,searchable:false}
 
                 ]

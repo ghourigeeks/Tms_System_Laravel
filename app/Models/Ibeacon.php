@@ -21,4 +21,9 @@ class Ibeacon extends Model
         return ($value == 1) ? "Active" : "Inactive";
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
+
 }

@@ -32,6 +32,7 @@ class Product extends Model
         return ($value == 1) ? "Active" : "Inactive";
     }
 
+
     public function getAddedToMpAttribute($value)
     {
         return ($value == 1) ? "Yes" : "No";
@@ -53,10 +54,20 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function sub_category()
+    public function subCategory()
     {
         return $this->belongsTo(Sub_category::class, 'sub_category_id', 'id');
     }
+
+    public function productImages()
+    {
+        return $this->hasMany(Product_image::class,'product_id','id');
+    }
+
+   
+
+
+
 
 
 }

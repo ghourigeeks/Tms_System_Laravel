@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Category')
+@section('title','Ibeacon')
 @section('content')
     @include( '../sweet_script')
 
@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Show @yield('title')</h4>
-                            <a  href="{{ route('categories.index') }}" class="btn btn-primary btn-xs ml-auto">
+                            <a  href="{{ route('ibeacons.index') }}" class="btn btn-primary btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </div>
@@ -27,23 +27,19 @@
                                         <tbody>
 
                                             <tr>
-                                                <th width="30%">Category</th>
+                                                <td width="30%">Client name</td>
                                                 <td>
-                                                    {{ isset($data->name) ? ($data->name) : ""}}
+                                                        {{ isset($data->client->fullname) ? ($data->client->fullname) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>Sub-category</th>
+                                                <td width="30%">Serial No:</td>
                                                 <td>
-                                                    @if(isset($data->subCategory) && count($data->subCategory) > 0)
-                                                        @foreach($data->subCategory as $key => $value)
-                                                            <span class="badge badge-primary">{{ isset($value->name) ? ($value->name) : ""}}</span>
-                                                        @endforeach
-                                                    @endif
+                                                        {{ isset($data->serial_no) ? ($data->serial_no) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>Status</th>
+                                                <td>Status</td>
                                                 <td>
                                                 
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )

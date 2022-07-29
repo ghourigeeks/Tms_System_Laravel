@@ -20,7 +20,7 @@ class CategoryRequest extends FormRequest
         ];
       }else{
         return [
-            'name'        => ['min:3','required', Rule::unique('categories')->ignore($this->city)],
+            'name'        => 'required|min:3',
         ];
       }
         
@@ -30,8 +30,8 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'         => 'City name is required',
-            'name.min'              => 'City name must be three or more character long',
+            'name.required'         => 'Category name is required',
+            'name.min'              => 'Category name must be three or more character long',
             
         ];
     }

@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">@yield('title') box</h4>
+                            <h4 class="card-title">@yield('title') ibeacon device</h4>
                             <span class="ml-auto">
                                 @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )
                                     <span class="badge badge-success">Active</span>
@@ -29,29 +29,13 @@
                                     <table class="table dt-responsive">
                                         <tbody>
                                             <tr>
-                                                <th width="30%">Box name</th>
-                                                <td>{{$data->name}}</td>
-                                                <th width="30%">QR code</th>
-                                                <td>{{ isset($data->qrcode) ? ($data->qrcode) : ""}}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <th>Price</th>
-                                                <td>{{ isset($data->price) ? ($data->price) : ""}}</td>
-                                                <th>Barcode</th>
-                                                <td>{{ isset($data->barcode) ? ($data->barcode) : ""}}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <th>Description</th>
-                                                <td colspan="3">{{ isset($data->description) ? ($data->description) : ""}}</td>
-                                            </tr>
-                                          
+                                                <th width="30%">Ibeacon device serial#</th>
+                                                <td>{{$data->serial_no}}</td>
+                                            </tr>                                          
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        
                         </div>
                     </div>
                 </div>

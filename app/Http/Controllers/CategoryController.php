@@ -2,8 +2,11 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Response;
+use Auth;
 use DataTables;
 use App\Models\Category;
+use App\Models\Sub_category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Controller;
@@ -23,7 +26,7 @@ class CategoryController extends Controller
         return view('categories.index');
     }
 
-    public function list()
+    public function list_category()
     {
         $data   = Category::orderBy('categories.name')
                     ->select(
@@ -62,52 +65,115 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        // Retrieve the validated input data...
-        $validated    = $request->validated();
+        try {
+            // Transaction
+            $exception = DB::transaction(function() use ($request){ 
 
-        // store validated data
-        $data         = Category::create($request->all());
-        return response()->json(['success'=>$request['name']. ' added successfully.']);
+                // Creating a single category
+                $category = Category::create([
+                    'name' => $request->name,
+                    'created_by' => Auth::user()->id
+                ]); 
+
+                // Creating multiple sub-categories
+                foreach ($request->sub_cat as $key => $value) {
+                    $sub_category = Sub_category::create([
+                        'name' => $value,
+                        'cat_id' => $category->id
+                    ]);
+                }
+
+            });
+
+            if(is_null($exception)) {
+                return response()->json(['success'=>$request['name']. ' added successfully.']);
+            } else {
+                throw new Exception;
+            }
+        }
+        
+        catch(\Exception $e) {
+            app('App\Http\Controllers\MailController')->send_exception($e);
+            return Response::json([
+                'status'    => "failed",
+                'msg'       => 'Something went wrong.',
+                "data"      => $e
+            ], 404);
+        }
       
-    }
+    } 
 
-     public function show($id)
+     public function show(Category $category)
     {
-        $data         = Category::findorFail($id);
+        $data         = Category::findorFail($category->id);
         return view('categories.show',compact('data'));
     }
 
 
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $data         = Category::findorFail($id);
-        return view('categories.edit',compact('data'));
+        $sub_category   = Category::findorFail($category->id)->subCategory()->get();
+        $category       = Category::findorFail($category->id);
+        return view('categories.edit',compact('sub_category','category'));
+
     }
 
 
-    public function update(CategoryRequest $request, $id)
+    public function update(CategoryRequest $request,Category $category)
     {
-        // Retrieve the validated input data...
-        $validated  = $request->validated();
+        try {
+            // Transaction
+            $exception = DB::transaction(function() use ($request,$category){ 
 
-        // get all request
-        $data       = Category::findOrFail($id);
-        $input      = $request->all();
+                // Creating a single category
+                $category               = Category::where('id',$category->id)->first();
+                $category->name         = $request->name;
+                $category->active       = $request->active;
+                $category->created_by   = Auth::user()->id;
+                $category->save();
 
-        // if active is not set, make it in-active
-        if(!(isset($input['active']))){
-            $input['active'] = 0;
+                // Deleting all sub-categories first
+                $sub_category   = Sub_category::where('cat_id',$category->id)->delete();
+
+                // Creating new multiple sub-categories
+                if ($sub_category) {
+                    foreach ($request->sub_cat as $key => $value) {
+                        $sub_cat = Sub_category::create([
+                            'name' => $value,
+                            'cat_id' => $category->id
+                        ]);
+                    }
+                }
+
+            });
+
+            if(is_null($exception)) {
+                return response()->json(['success'=>$request['name']. ' updated successfully.']);
+            } else {
+                throw new Exception;
+            }
         }
-
-        // update
-        $upd        = $data->update($input);
-        return response()->json(['success'=>$request['name']. ' updated successfully.']);
+        
+        catch(\Exception $e) {
+            app('App\Http\Controllers\MailController')->send_exception($e);
+            return Response::json([
+                'status'    => "failed",
+                'msg'       => 'Something went wrong.',
+                "data"      => $e
+            ], 404);
+        }
+        
     }
 
-    public function destroy(Request $request)
+    public function del_category(Category $category)
     {
-        $data   = Category::whereIn('id',explode(",", $request->ids))->delete();
-        return response()->json(['success'=>$data." Category deleted successfully."]);
+        $sub_category   = Sub_category::where('cat_id',$category->id)->delete();
+        if ($sub_category) {
+            $category   = Category::where('id',$category->id)->delete();
+            if ($category) {
+                return response()->json(['success'=>$data." Category deleted successfully."]);
+            }
+        }
     }
 
 }

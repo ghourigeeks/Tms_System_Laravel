@@ -1,10 +1,11 @@
 @extends('layouts.main')
-@section('title','Client')
+@section('title','Product')
 @section('content')
     @include( '../sweet_script')
+
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">@yield('title'):  {{ isset($data->client->fullname) ? ($data->client->fullname) : ""}}</h4>
+            <h4 class="page-title">@yield('title')</h4>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -162,8 +163,8 @@
                 </div>
             </div>
         </div>
-
     </div>
+
     <!-- Creates the bootstrap modal where the image will appear -->
     <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -183,7 +184,9 @@
     </div>
 
     <script>
-       
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
         $(".pop").on("click", function() {
             $('#imagepreview').attr('src',$(this).find(".imageresource").attr('src'));
             $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function

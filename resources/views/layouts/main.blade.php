@@ -185,6 +185,13 @@
 						</div>
 					</div>
 					<ul class="nav">
+
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">General</h4>
+						</li>
 						
 						<li class="nav-item  @if('home' == url_explode(request()->path()) ) {{'active'}} @endif">
 							<a href="{{url('/home')}}">
@@ -192,6 +199,38 @@
 								<p>Dashboard</p>
 							</a>
 						</li>
+
+						<li class="nav-item @if('clients' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('clients')}}">
+								<i class="fas fa-users"></i>
+								<p>Clients</p>
+							</a>
+						</li>
+
+
+						<li class="nav-item @if('boxes' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('boxes')}}">
+								<i class="fas fa-box"></i>
+								<p>Boxes</p>
+							</a>
+						</li>
+
+
+						<li class="nav-item @if('products' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('products')}}">
+								<i class="fab fa-product-hunt"></i>
+								<p>Products</p>
+							</a>
+						</li>
+
+
+						<li class="nav-item @if('ibeacons' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('ibeacons')}}">
+								<i class="fas fa-microchip"></i>
+								<p>Ibeacons</p>
+							</a>
+						</li>
+
 
 						<li class="nav-item @if('peoples' == url_explode(request()->path()) ) {{'active'}} @endif">
 							<a  href="{{url('/peoples')}}">
@@ -207,6 +246,7 @@
 							</span>
 							<h4 class="text-section">Customize</h4>
 						</li>
+						
 
 						<li class="nav-item @if('payments' == url_explode(request()->path()) ) {{'active'}} @endif">
 							<a  href="{{url('payments')}}">

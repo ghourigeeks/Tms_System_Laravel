@@ -100,7 +100,30 @@ class PermissionSeeder extends Seeder
             'client-list',
             'client-create',
             'client-edit',
-            'client-delete'
+            'client-delete',
+
+                
+            'product-list',
+            'product-create',
+            'product-edit',
+            'product-delete',
+
+
+                
+            'box-list',
+            'box-create',
+            'box-edit',
+            'box-delete',
+
+
+                
+            'ibeacon-list',
+            'ibeacon-create',
+            'ibeacon-edit',
+            'ibeacon-delete',
+
+
+
 
 
             

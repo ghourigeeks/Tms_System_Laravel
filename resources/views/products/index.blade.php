@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Categories')
+@section('title','Products')
 @section('content')
     @include( '../sweet_script')
     <div class="page-inner">
@@ -12,9 +12,9 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
-                            @can('category-create')
-                                <a  href="{{ route('categories.create') }}" class="btn btn-primary btn-xs ml-auto">
-                                <i class="fa fa-plus"></i>New</a>
+                            @can('product-create')
+                                <a  href="{{ route('products.create') }}" class="btn btn-primary btn-xs ml-auto">
+                                <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
                     </div>
@@ -24,7 +24,10 @@
                                 <thead>
                                     <tr>
                                         <th width="5%">#</th>
-                                        <th>Name</th>
+                                        <th>Client name</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th width="18%" data-toggle="tooltip" data-placement="top" title="This product is added to Marketplace">Marketplace</th>
                                         <th width="8%"> Active</th>
                                         <th width="10%" >Action</th>
                                     </tr>
@@ -38,6 +41,16 @@
         </div>
     </div>
 
+    
+    <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+       
+
+    </script>
+
     <script>
         $(document).ready(function () {  
             var t = $('#myTable').DataTable({
@@ -45,11 +58,14 @@
                     "processing": true,
                     "serverSide": false,
                     "select":true,
-                    "ajax": "{{ url('list_category') }}",
+                    "ajax": "{{ url('lst_product') }}",
                     "method": "GET",
                     "columns": [
                         {"data": "srno"},
+                        {"data": "client_name"},
                         {"data": "name"},
+                        {"data": "price"},
+                        {"data": "added_to_mp"},
                         {"data": "active",orderable:false,searchable:false},
                         {"data": "action",orderable:false,searchable:false}
 
