@@ -14,7 +14,7 @@
                             <h4 class="card-title">Manage @yield('title')</h4>
                             @can('faq-create')
                                 <a  href="{{ route('faqs.create') }}" class="btn btn-primary btn-xs ml-auto">
-                                <i class="fa fa-plus"></i>New</a>
+                                <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
                     </div>

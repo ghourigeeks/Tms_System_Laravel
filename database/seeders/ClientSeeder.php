@@ -27,7 +27,7 @@ class ClientSeeder extends Seeder
                     'country_id'     => '1',
                     'state'          => 'Sindh',
                     'city'           => 'Hyderabad',
-                    'profile_pic'    => '331525526',
+                    'profile_pic'    => '331525526.jpg',
                     'verified'       => '1'
 
                 ),
@@ -42,7 +42,7 @@ class ClientSeeder extends Seeder
                     'country_id'     => '1',
                     'state'          => 'Sindh',
                     'city'           => 'Hyderabad',
-                    'profile_pic'    => '331525526',
+                    'profile_pic'    => '331525526.jpg',
                     'verified'       => '1'
 
                 ),
@@ -57,7 +57,7 @@ class ClientSeeder extends Seeder
                     'country_id'     => '1',
                     'state'          => 'Sindh',
                     'city'           => 'Hyderabad',
-                    'profile_pic'    => '331525526',
+                    'profile_pic'    => 'aquib.jpg',
                     'verified'       => '1'
 
                 ),
@@ -72,7 +72,7 @@ class ClientSeeder extends Seeder
                     'country_id'     => '1',
                     'state'          => 'Sindh',
                     'city'           => 'Hyderabad',
-                    'profile_pic'    => '331525526',
+                    'profile_pic'    => 'aquib.jpg',
                     'verified'       => '1'
 
                 ),

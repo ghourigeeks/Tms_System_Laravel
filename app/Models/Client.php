@@ -69,4 +69,14 @@ class Client extends Authenticatable
     {
         return $this->belongsTo(Complaint::class,'client_id','id');
     }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class,'region_id','id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class,'country_id','id');
+    }
 }

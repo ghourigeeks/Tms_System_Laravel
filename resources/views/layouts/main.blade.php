@@ -49,6 +49,12 @@
 			width: 0;
 			height: 0;
 		}
+	      html,body{
+	        height: 100%;
+	      }
+	      .loader{
+	        display: none;
+	      }
 	</style>
 </head>
 <body>
@@ -223,6 +229,13 @@
 							</a>
 						</li>
 
+						<li class="nav-item @if('categories' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('categories')}}">
+								<i class="fas fa-list-alt"></i>
+								<p>Categories</p>
+							</a>
+						</li>
+
 
 						<li class="nav-item @if('ibeacons' == url_explode(request()->path()) ) {{'active'}} @endif">
 							<a  href="{{url('ibeacons')}}">
@@ -280,13 +293,6 @@
 							<a  href="{{url('/countries')}}">
 								<i class="fas fa-flag"></i>
 								<p>Country</p>
-							</a>
-						</li>
-
-						<li class="nav-item @if('categories' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('categories')}}">
-								<i class="fas fa-list-alt"></i>
-								<p>Categories</p>
 							</a>
 						</li>
 

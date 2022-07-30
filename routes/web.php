@@ -157,11 +157,11 @@
 
 	// Itag URLS
 
-	// BEGIN::complaint
+	// BEGIN::complaint_tags
 		Route::resource('/complaints', ComplaintController::class);
 		// Route::get('/lst_complaint_tags', [Complaint_tagController::class, 'list']);
 		// Route::delete('/del_complaint_tag', [Complaint_tagController::class, 'destroy']);
-	// END::complaint
+	// BEGIN::complaint_tags
 
 
 
@@ -189,11 +189,11 @@
 		Route::delete('/del_country', [CountryController::class, 'destroy']);
 	// BEGIN::country
 
-	// BEGIN::Product
+	// BEGIN::product
 		Route::resource('/products', ProductController::class);
 		Route::get('/lst_product', [ProductController::class, 'list']);
 		Route::delete('/del_product', [ProductController::class, 'destroy']);
-	// BEGIN::Product
+	// BEGIN::product
 
 	// BEGIN::Box
 		Route::resource('/boxes', BoxController::class);
@@ -213,11 +213,16 @@
 		Route::delete('/del_category', [CategoryController::class, 'del_category']);
 	// END::Categories
 
-	// BEGIN::faq
+
+    // BEGIN::faq
 		Route::resource('/faqs', FaqController::class);
 		Route::get('/lst_faq', [FaqController::class, 'list']);
 		Route::delete('/del_faq', [FaqController::class, 'destroy']);
 	// END::faq
+
+
+
+
 
 });
 

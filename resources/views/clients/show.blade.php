@@ -120,8 +120,8 @@
                                         <tr>
                                             <th>Country & Region</th>
                                             <td>
-                                                {{ isset($data->country_id) ? ($data->country_id) :""}} ,
-                                                {{ isset($data->region_id) ? ($data->region_id) :""}} 
+                                                {{ isset($data->country->name) ? ($data->country->name) :""}} ,
+                                                {{ isset($data->region->name) ? ($data->region->name) :""}} 
                                             </td>
                                         </tr>
 

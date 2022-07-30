@@ -167,13 +167,8 @@ class CategoryController extends Controller
 
     public function del_category(Category $category)
     {
-        $sub_category   = Sub_category::where('cat_id',$category->id)->delete();
-        if ($sub_category) {
-            $category   = Category::where('id',$category->id)->delete();
-            if ($category) {
-                return response()->json(['success'=>$data." Category deleted successfully."]);
-            }
-        }
+        $data   = Category::whereIn('id',explode(",", $request->ids))->delete();
+        return response()->json(['success'=>$data." Category deleted successfully."]);
     }
 
 }

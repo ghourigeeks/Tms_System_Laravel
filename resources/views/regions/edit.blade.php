@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Edit @yield('title')</h4>
+                            <h4 class="card-title">Edit @yield('title')</h4><span style="margin-left:10px" class="loader"></span>
                             <a  href="{{ route('regions.index') }}" class="btn btn-primary btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
@@ -92,10 +92,14 @@
                     cache: false,
                     contentType: false,
                     processData: false,
+                    beforeSend:function(){
+                        $('.loader').show();
+                    },
                     success: (data) => {
                         if(data.success){
                             // this.reset();
                             toastr.success(data.success);
+                            $('.loader').hide();
                         }else{
                             if (typeof (data.error) !== 'undefined') {
                                 toastr.error(data.error);
@@ -109,6 +113,7 @@
                             txt += data.responseJSON.errors[key];
                             txt +='<br>';
                         }
+                        $('.loader').hide();
                         toastr.error(txt);
                     }
                 });

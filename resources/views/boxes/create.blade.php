@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Boxes')
+@section('title','Box')
 @section('content')
     @include( '../sweet_script')
     <div class="page-inner">
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Add @yield('title')</h4>
+                            <h4 class="card-title">Add @yield('title')</h4><span style="margin-left:10px" class="loader"></span>
                             <a  href="{{ route('boxes.index') }}" class="btn btn-primary btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
@@ -122,10 +122,14 @@
                     cache: false,
                     contentType: false,
                     processData: false,
+                    beforeSend:function(){
+                        $('.loader').show();
+                    },
                     success: (data) => {
                         if(data.success){
                             this.reset();
                             toastr.success(data.success);
+                            $('.loader').hide();
                         }
                     },
                     error: function(data) {
@@ -135,6 +139,7 @@
                             txt += data.responseJSON.errors[key];
                             txt +='<br>';
                         }
+                        $('.loader').hide();
                         toastr.error(txt);
                     }
                 });

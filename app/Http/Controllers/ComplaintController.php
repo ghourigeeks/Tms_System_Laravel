@@ -24,42 +24,42 @@ class ComplaintController extends Controller
         return view('complaints.index',compact('complaints'));
     }
 
-    // public function list()
-    // {
-    //     $data   = Complaint::orderBy('complaints.name')
-    //                 ->select(
-    //                             'complaints.id',
-    //                             'complaints.name',
-    //                             'complaints.active'
-    //                         )
-    //                 ->get();
-    //     return 
-    //         DataTables::of($data)
-    //             ->addColumn('action',function($data){
-    //                 return '
-    //                 <div class="btn-group btn-group">
-    //                     <a class="btn btn-info btn-xs" href="complaints/'.$data->id.'">
-    //                         <i class="fa fa-eye"></i>
-    //                     </a>
-    //                     <a class="btn btn-info btn-xs" href="complaints/'.$data->id.'/edit" id="'.$data->id.'">
-    //                         <i class="fas fa-pencil-alt"></i>
-    //                     </a>
-    //                     <button
-    //                         class="btn btn-danger btn-xs delete_all"
-    //                         data-url="'. url('del_complaint') .'" data-id="'.$data->id.'">
-    //                         <i class="fas fa-trash-alt"></i>
-    //                     </button>
-    //                 </div>';
-    //             })
-    //             ->addColumn('srno','')
-    //             ->rawColumns(['srno','','action'])
-    //             ->make(true);
-    // }
+    public function list()
+    {
+        $data   = Complaint::orderBy('complaints.name')
+                    ->select(
+                                'complaints.id',
+                                'complaints.name',
+                                'complaints.active'
+                            )
+                    ->get();
+        return 
+            DataTables::of($data)
+                ->addColumn('action',function($data){
+                    return '
+                    <div class="btn-group btn-group">
+                        <a class="btn btn-info btn-xs" href="complaints/'.$data->id.'">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a class="btn btn-info btn-xs" href="complaints/'.$data->id.'/edit" id="'.$data->id.'">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <button
+                            class="btn btn-danger btn-xs delete_all"
+                            data-url="'. url('del_complaint') .'" data-id="'.$data->id.'">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>';
+                })
+                ->addColumn('srno','')
+                ->rawColumns(['srno','','action'])
+                ->make(true);
+    }
 
-    // public function create()
-    // {
-    //     return view('complaints.create');
-    // }
+    public function create()
+    {
+        return view('complaints.create');
+    }
 
     public function store(ComplaintRequest $request)
     {
@@ -102,7 +102,7 @@ class ComplaintController extends Controller
 
         // update
         $upd        = $data->update($input);
-        return response()->json(['success'=>'Response has been sent successfully.']);
+        return view('complaints.show',compact('data'));
     }
 
     public function destroy(Request $request)

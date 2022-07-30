@@ -65,31 +65,24 @@
                 <div class="card response-form">
                     <div class="card-header">
                        <!--begin::Form-->
-                        {!! Form::open(array('id'=>'form','enctype'=>'multipart/form-data')) !!}
-                        {{  Form::hidden('created_by', Auth::user()->id ) }}
-                        {{  Form::hidden('action', "update" ) }}
-                        <div class="card-body">
-                            <div class=" row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                     <form action="{{ route('complaints.update',$data->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                             <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('response','Response <span class="text-danger">*</span>')) !!}
-                                        {{ Form::textarea('response', null, array('placeholder' => 'Enter response','class' => 'form-control','autofocus' => '', 'rows'=>4  )) }}
-                                        @if ($errors->has('response'))  
-                                            {!! "<span class='span_danger'>". $errors->first('response')."</span>"!!} 
+                                        {!! Html::decode(Form::label('res','Response <span class="text-danger">*</span>')) !!}
+                                        {{ Form::textarea('res', null, array('placeholder' => 'Enter response','class' => 'form-control','autofocus' => '', 'rows'=>4  )) }}
+                                        @if ($errors->has('res'))  
+                                        {!! "<span class='span_danger'>". $errors->first('res')."</span>"!!} 
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-lg-12 text-right">
-                                    <button type="submit" class="btn btn-primary btn-sm mr-2">Save</button>
-                                    <button type="reset" class="btn btn-danger  btn-sm ">Cancel</button>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
-                        </div>
-                    {!! Form::close() !!}
+                        </form>
                     <!--end::Form-->
                     </div>
                     <div class="card-fooer"></div>
@@ -101,40 +94,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('#form').submit(function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('complaints.update',$data->id) }}",
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: (data) => {
-                    if(data.success){
-                        this.reset();
-                        toastr.success(data.success);
-                    }
-                },
-                error: function(data) {
-                    var txt         = '';
-                    console.log(data.responseJSON.errors[0])
-                    for (var key in data.responseJSON.errors) {
-                        txt += data.responseJSON.errors[key];
-                        txt +='<br>';
-                    }
-                    toastr.error(txt);
-                }
-            });
-        });
 
         $(".response-btn").click(function(){
             $(".response-form").slideToggle("medium");

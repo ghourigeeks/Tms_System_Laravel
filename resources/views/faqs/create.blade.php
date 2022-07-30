@@ -1,14 +1,7 @@
 @extends('layouts.main')
 @section('title','Faq')
 @section('content')
-<style>
-      html,body{
-        height: 100%;
-      }
-      .loader{
-        display: none;
-      }
-  </style>
+
     @include( '../sweet_script')
     <div class="page-inner">
         <div class="page-header">
@@ -57,7 +50,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-lg-12 text-right">
-                                    <button type="submit" class="btn btn-primary btn-sm mr-2">Save</button>
+                                    <button id="aaa" type="submit" class="btn btn-primary btn-sm mr-2">Save</button>
                                     <button type="reset" class="btn btn-danger  btn-sm ">Cancel</button>
                                 </div>
                             </div>

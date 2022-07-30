@@ -17,27 +17,32 @@ class Product_imageSeeder extends Seeder
         $products_images = [
                 array(
                     'product_id'     => '1',
-                    'pic'            => 'oppo'
+                    'pic'            => 'aquib.jpg'
+
+                ),
+                array(
+                    'product_id'     => '1',
+                    'pic'            => '331525526.jpg'
 
                 ),
                 array(
                     'product_id'     => '2',
-                    'pic'            => 'vivo'
+                    'pic'            => '331525526.jpg'
 
                 ),
                 array(
                     'product_id'     => '3',
-                    'pic'            => 'iphone'
+                    'pic'            => '1685059624.jpg'
 
                 ),
                 array(
                     'product_id'     => '4',
-                    'pic'            => 'infinix'
+                    'pic'            => 'aquib.jpg'
 
                 ),
                 array(
                     'product_id'     => '5',
-                    'pic'            => 'realme'
+                    'pic'            => 'aquib.jpg'
 
                 )
 

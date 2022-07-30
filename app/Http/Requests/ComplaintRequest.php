@@ -15,11 +15,11 @@ class ComplaintRequest extends FormRequest
     {
         if((isset($this->action)) && (($this->action) == "store") ){
             return [
-                'response' => 'required|min:3',
+                'response' => 'min:3',
             ];
           }else{
             return [
-                'response' => 'min:3|required'
+                'response' => 'min:3'
             ];
         }
     }
