@@ -39,6 +39,26 @@ class ComplaintSeeder extends Seeder
                     'client_id'   => '2',
                     'subject'     => 'Quantity of goods is not what was ordered',
                     'complaint'   => 'The tone of the content should be formal'
+                ),
+                array(
+                    'client_id'   => '1',
+                    'subject'     => 'Quantity of goods is not what was ordered',
+                    'complaint'   => 'The tone of the content should be formal'
+                ),
+                array(
+                    'client_id'   => '3',
+                    'subject'     => 'The goods arrive in a damaged condition',
+                    'complaint'   => 'This is where you greet the person'
+                ),
+                array(
+                    'client_id'   => '1',
+                    'subject'     => 'The goods arrive in a damaged condition',
+                    'complaint'   => 'This is where you greet the person'
+                ),
+                 array(
+                    'client_id'   => '3',
+                    'subject'     => 'The goods arrive in a damaged condition',
+                    'complaint'   => 'This is where you greet the person'
                 )
 
            ];
