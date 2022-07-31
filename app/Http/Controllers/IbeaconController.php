@@ -26,18 +26,20 @@ class IbeaconController extends Controller
         return view('ibeacons.index');
     }
 
+
     public function list()
     {
-        $data   = Ibeacon::orderBy('ibeacons.id')
-                    ->select(
-                                'ibeacons.id',
-                                'ibeacons.client_id',
-                                'ibeacons.serial_no',
-                                'ibeacons.active',
-                            )
-                    ->get();
+        $data   = Ibeacon::orderBy('ibeacons.id')->get();
         return 
             DataTables::of($data)
+                ->addColumn('client_name',function($data){
+                    if(isset($data->client->fullname)){
+                        return $data->client->fullname;
+                    }else{
+                        return "";
+                    }
+                })
+                
                 ->addColumn('action',function($data){
                     return '
                     <div class="btn-group btn-group">
@@ -49,16 +51,15 @@ class IbeaconController extends Controller
                         </a>
                         <button
                             class="btn btn-danger btn-xs delete_all"
-                            data-url="'. url('del_ibeacons') .'" data-id="'.$data->id.'">
+                            data-url="'. url('del_ibeacon') .'" data-id="'.$data->id.'">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>';
                 })
                 ->addColumn('srno','')
-                ->rawColumns(['srno','','action'])
-                ->make(true);
-    }
-
+                ->rawColumns(['srno','','client_name','action'])
+                ->make(true);    
+}
 
     public function create()
     {
