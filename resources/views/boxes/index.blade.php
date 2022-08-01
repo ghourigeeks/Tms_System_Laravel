@@ -52,7 +52,7 @@
                     "method": "GET",
                     "columns": [
                         {"data": "srno"},
-                        {"data": "client_id"},
+                        {"data": "client_name"},
                         {"data": "name"},
                         {"data": "price"},
                         {"data": "barcode"},

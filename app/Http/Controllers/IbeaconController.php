@@ -39,7 +39,10 @@ class IbeaconController extends Controller
                         return "";
                     }
                 })
+<<<<<<< Updated upstream
                 
+=======
+>>>>>>> Stashed changes
                 ->addColumn('action',function($data){
                     return '
                     <div class="btn-group btn-group">
@@ -57,9 +60,16 @@ class IbeaconController extends Controller
                     </div>';
                 })
                 ->addColumn('srno','')
+<<<<<<< Updated upstream
                 ->rawColumns(['srno','','client_name','action'])
                 ->make(true);    
 }
+=======
+                ->rawColumns(['srno','client_name','','action'])
+                ->make(true);
+    }
+
+>>>>>>> Stashed changes
 
     public function create()
     {

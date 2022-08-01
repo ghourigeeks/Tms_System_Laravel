@@ -244,6 +244,15 @@
 							</a>
 						</li>
 
+						<li class="nav-item @if('complaints' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/complaints')}}">
+								<i class="fas fa-envelope"></i>
+								<p>Complaints</p>
+							</a>
+						</li>
+
+<!-- 						
+
 
 						<li class="nav-item @if('peoples' == url_explode(request()->path()) ) {{'active'}} @endif">
 							<a  href="{{url('/peoples')}}">
@@ -251,6 +260,7 @@
 								<p>People</p>
 							</a>
 						</li>
+<<<<<<< Updated upstream
 
 						<li class="nav-item @if('complaints' == url_explode(request()->path()) ) {{'active'}} @endif">
 							<a  href="{{url('/complaints')}}">
@@ -259,6 +269,9 @@
 							</a>
 						</li>
 					
+=======
+					 -->
+>>>>>>> Stashed changes
 
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">

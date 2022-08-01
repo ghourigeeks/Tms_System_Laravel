@@ -50,7 +50,7 @@
                     "method": "GET",
                     "columns": [
                         {"data": "srno"},
-                        {"data": "client_id"},
+                        {"data": "client_name"},
                         {"data": "serial_no"},
                         {"data": "active",orderable:false,searchable:false},
                         {"data": "action",orderable:false,searchable:false}

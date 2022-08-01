@@ -40,6 +40,13 @@ class BoxController extends Controller
                     ->get();
         return 
             DataTables::of($data)
+                ->addColumn('client_name',function($data){
+                    if(isset($data->client->fullname)){
+                        return $data->client->fullname;
+                    }else{
+                        return "";
+                    }
+                })
                 ->addColumn('action',function($data){
                     return '
                     <div class="btn-group btn-group">
@@ -57,7 +64,7 @@ class BoxController extends Controller
                     </div>';
                 })
                 ->addColumn('srno','')
-                ->rawColumns(['srno','','action'])
+                ->rawColumns(['srno','client_name','','action'])
                 ->make(true);
     }
 
