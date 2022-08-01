@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Faq')
+@section('title','FAQ')
 @section('content')
     @include( '../sweet_script')
 
@@ -27,19 +27,19 @@
                                         <tbody>
 
                                             <tr>
-                                                <td width="30%">Question</td>
+                                                <th width="30%">Question</th>
                                                 <td>
                                                         {{ isset($data->question) ? ($data->question) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="30%">Description</td>
+                                                <th width="30%">Description</th>
                                                 <td>
                                                         {{ isset($data->description) ? ($data->description) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Status</td>
+                                                <th>Status</th>
                                                 <td>
                                                 
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )

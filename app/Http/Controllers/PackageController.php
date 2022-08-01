@@ -68,10 +68,35 @@ class PackageController extends Controller
     {
         // Retrieve the validated input data...
         $validated    = $request->validated();
+        $input        = $request->all();
+
+        
+        if(!(isset($input['add_to_mp']))){
+            $input['add_to_mp'] = 0;
+        }
+
+        if(!(isset($input['ibeacon']))){
+            $input['ibeacon'] = 0;
+        }
+
+
+        if(!(isset($input['barcode']))){
+            $input['barcode'] = 0;
+        }
+
+
+        if(!(isset($input['qrcode']))){
+            $input['qrcode'] = 0;
+        }
+
+
+        if(!(isset($input['active']))){
+            $input['active'] = 0;
+        }
 
         // store validated data
-        $data         = Package::create($request->all());
-        return response()->json(['success'=>$request['name']. ' added successfully.']);
+        $data         = Package::create($input);
+        return response()->json(['success'=>$input['name']. ' added successfully.']);
     }
 
     public function show($id)

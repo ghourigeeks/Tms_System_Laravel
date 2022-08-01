@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use DataTables;
+use Str;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,33 +27,44 @@ class ComplaintController extends Controller
 
     public function list()
     {
-        $data   = Complaint::orderBy('complaints.name')
-                    ->select(
-                                'complaints.id',
-                                'complaints.name',
-                                'complaints.active'
-                            )
-                    ->get();
+        $data   = Complaint::get();
         return 
             DataTables::of($data)
-                ->addColumn('action',function($data){
-                    return '
-                    <div class="btn-group btn-group">
-                        <a class="btn btn-info btn-xs" href="complaints/'.$data->id.'">
-                            <i class="fa fa-eye"></i>
+                ->addColumn('profile_pic',function($data){
+                    if(isset($data->client->profile_pic)){
+                        return '  <div class="list-group-item-figure">
+                        <a href="complaints/'.$data->id.'" class="user-avatar">
+                            <div class="avatar">
+                                <img src="'.$data->client->profile_pic.'" alt="..." class="avatar-img rounded-circle">
+                            </div>
                         </a>
-                        <a class="btn btn-info btn-xs" href="complaints/'.$data->id.'/edit" id="'.$data->id.'">
-                            <i class="fas fa-pencil-alt"></i>
-                        </a>
-                        <button
-                            class="btn btn-danger btn-xs delete_all"
-                            data-url="'. url('del_complaint') .'" data-id="'.$data->id.'">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
                     </div>';
+                    }else{
+                        return "";
+                    }
+                    
                 })
+                ->addColumn('client_name',function($data){
+                    if(isset($data->client->fullname)){
+                        $sub = (isset($data->subject)) ? (Str::of($data->subject)->limit(30)) : "";
+                        
+                        return 
+                                '
+                                <div class="list-group-item-body pl-3 pl-md-4">
+                                    <h4 class="list-group-item-title">
+                                        <a href="complaints/'.$data->id.'">
+                                            '.$data->client->fullname.'
+                                        </a>
+                                    </h4>
+                                    <p class="list-group-item-text text-truncate">'.$sub.'</p>
+                                </div>';
+                    }else{
+                        return "";
+                    }
+                })
+               
                 ->addColumn('srno','')
-                ->rawColumns(['srno','','action'])
+                ->rawColumns(['srno','profile_pic','client_name',''])
                 ->make(true);
     }
 

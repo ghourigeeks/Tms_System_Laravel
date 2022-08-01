@@ -223,7 +223,7 @@
 
 
 						<li class="nav-item @if('products' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('products')}}">
+							<a href="{{url('products')}}">
 								<i class="fab fa-product-hunt"></i>
 								<p>Products</p>
 							</a>
@@ -252,20 +252,7 @@
 						</li>
 
 
-						<li class="nav-item @if('peoples' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/peoples')}}">
-								<i class="fas fa-users"></i>
-								<p>People</p>
-							</a>
-						</li>
 
-						<li class="nav-item @if('complaints' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/complaints')}}">
-								<i class="fa fa-solid fa-comment"></i>
-								<p>Complaints</p>
-							</a>
-						</li>
-					
 
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">

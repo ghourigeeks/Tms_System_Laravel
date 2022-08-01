@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('add_to_mp','Ibeacon<span class="text-danger"> *</span>')) !!}
+                                        {!! Html::decode(Form::label('ibeacon','Ibeacon<span class="text-danger"> *</span>')) !!}
                                         <span class="switch switch-sm switch-icon switch-success">
                                             <?php
                                                 $actv= 0;
@@ -110,7 +110,7 @@
                                 </div>
                                   <div class="col-4">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('add_to_mp','Barcode<span class="text-danger"> *</span>')) !!}
+                                        {!! Html::decode(Form::label('barcode','Barcode<span class="text-danger"> *</span>')) !!}
                                         <span class="switch switch-sm switch-icon switch-success">
                                             <?php
                                                 $actv= 0;
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('add_to_mp','Active<span class="text-danger"> *</span>')) !!}
+                                        {!! Html::decode(Form::label('active','Active<span class="text-danger"> *</span>')) !!}
                                         <span class="switch switch-sm switch-icon switch-success">
                                             <?php
                                                 $actv= 0;

@@ -25,17 +25,15 @@
                                 <div class="table-responsive">
                                     <table class="table dt-responsive">
                                         <tbody>
-
                                             <tr>
-                                                <td width="30%">Region name</td>
+                                                <th width="30%">Region name</th>
                                                 <td>
                                                         {{ isset($data->name) ? ($data->name) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Status</td>
+                                                <th>Status</th>
                                                 <td>
-                                                
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )
                                                         <span class="badge badge-success">Active</span>
                                                     @else

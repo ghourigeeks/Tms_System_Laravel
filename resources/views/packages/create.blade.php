@@ -63,6 +63,87 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        {!! Html::decode(Form::label('add_to_mp','Marketplace<span class="text-danger"> *</span>')) !!}
+                                        <span class="switch switch-sm switch-icon switch-success">
+                                         
+                                            <label>
+                                                {!! Form::checkbox('add_to_mp',1,  array('class' => 'form-control')) !!}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    
+                                        @if ($errors->has('add_to_mp'))  
+                                            {!! "<span class='span_danger'>". $errors->first('add_to_mp')."</span>"!!} 
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        {!! Html::decode(Form::label('ibeacon','Ibeacon<span class="text-danger"> *</span>')) !!}
+                                        <span class="switch switch-sm switch-icon switch-success">
+                                            <label>
+                                                {!! Form::checkbox('ibeacon',1,  array('class' => 'form-control')) !!}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    
+                                        @if ($errors->has('ibeacon'))  
+                                            {!! "<span class='span_danger'>". $errors->first('ibeacon')."</span>"!!} 
+                                        @endif
+                                    </div>
+                                </div>
+                                  <div class="col-4">
+                                    <div class="form-group">
+                                        {!! Html::decode(Form::label('barcode','Barcode<span class="text-danger"> *</span>')) !!}
+                                        <span class="switch switch-sm switch-icon switch-success">
+                                            <label>
+                                                {!! Form::checkbox('barcode',1,  array('class' => 'form-control')) !!}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    
+                                        @if ($errors->has('barcode'))  
+                                            {!! "<span class='span_danger'>". $errors->first('barcode')."</span>"!!} 
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        {!! Html::decode(Form::label('qrcode','Qrcode<span class="text-danger"> *</span>')) !!}
+                                        <span class="switch switch-sm switch-icon switch-success">
+                                            <label>
+                                                {!! Form::checkbox('qrcode',1,  array('class' => 'form-control')) !!}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    
+                                        @if ($errors->has('qrcode'))  
+                                            {!! "<span class='span_danger'>". $errors->first('qrcode')."</span>"!!} 
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        {!! Html::decode(Form::label('active','Active<span class="text-danger"> *</span>')) !!}
+                                        <span class="switch switch-sm switch-icon switch-success">
+                                            <label>
+                                                {!! Form::checkbox('active',1, array('class' => 'form-control')) !!}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    
+                                        @if ($errors->has('active'))  
+                                            {!! "<span class='span_danger'>". $errors->first('active')."</span>"!!} 
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-footer">
                             <div class="row">

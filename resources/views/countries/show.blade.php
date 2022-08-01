@@ -27,19 +27,19 @@
                                         <tbody>
 
                                             <tr>
-                                                <td width="30%">Country name</td>
+                                                <th width="30%">Country name</th>
                                                 <td>
                                                         {{ isset($data->name) ? ($data->name) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="30%">Region name</td>
+                                                <th width="30%">Region name</th>
                                                 <td>
                                                         {{((isset($data->region->name)) ? $data->region->name : " ")}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Status</td>
+                                                <th>Status</th>
                                                 <td>
                                                 
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )

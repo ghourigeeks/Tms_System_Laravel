@@ -17,18 +17,18 @@ class PackageRequest extends FormRequest
     {
         if((isset($this->action)) && (($this->action) == "store") ){
             $con    =   [
-                            'name'              => 'required|min:3|unique:payment_methods,name',
-                            'amount'            => 'required|numeric',
-                            'box_limit'         => 'required|digits:1|numeric',
-                            'inventory_limit'   => 'required|digits:1|numeric',
+                            'name'              => 'required|min:3|regex:/^([^0-9]*)$/|unique:packages,name',
+                            'amount'            => 'required|min:0|numeric',
+                            'box_limit'         => 'required|min:0|numeric',
+                            'inventory_limit'   => 'required|min:0|numeric',
                         ];
             return $con; 
         }else{
             $con    =   [
-                            'name'               => ['required'], 
-                            'amount'             => ['required','numeric'],
-                            'box_limit'          => ['required','digits:1','numeric'],
-                            'inventory_limit'    => ['required','digits:1','numeric'],
+                            'name'               => ['required','min:3',"regex:/^([^0-9]*)$/", Rule::unique('packages')->ignore($this->package)], 
+                            'amount'             => ['required','min:0','numeric'],
+                            'box_limit'          => ['required','min:0','numeric'],
+                            'inventory_limit'    => ['required','min:0','numeric'],
 
                         ];
             return $con; 

@@ -45,6 +45,7 @@ class ClientController extends Controller
                     ->get();
         return 
             DataTables::of($data)
+            
                 ->addColumn('profile_pic',function($data){
                     return 
                         '<div class="avatar">
@@ -121,6 +122,14 @@ class ClientController extends Controller
         $data   = Product::where('products.client_id',$client_id)->get();
         return 
             DataTables::of($data)
+                ->addColumn('added_to_mp',function($data){
+                    if((isset($data->added_to_mp)) && ( ($data->added_to_mp == 1) || ($data->added_to_mp == "Yes") ) ){
+                        return '<span class="badge badge-success">Yes</span>';
+                    }else{
+                        return '<span class="badge badge-danger">No</span>';
+                    }
+                })
+                
                 ->addColumn('action',function($data){
                     return '<div class="btn-group btn-group">
                                 <a class="btn btn-info btn-xs" href="product/'.$data->id.'">
@@ -130,7 +139,7 @@ class ClientController extends Controller
                 })
 
                 ->addColumn('srno','')
-                ->rawColumns(['srno','','action'])
+                ->rawColumns(['srno','','added_to_mp','action'])
                 ->make(true);
     }
 
@@ -212,48 +221,6 @@ class ClientController extends Controller
 
 
 
-    public function complaints($id)
-    {
-        $data       = Complaint::where('complaints.client_id', $id)->first();
-
-        if((empty($data))){
-            return Redirect::back()->withErrors(['msg' => 'No complaint found!']);
-        }
-        return view('clients.complaints',compact('data','id'));
-    }
-    
-    public function complaints_lst($client_id)
-    {
-        $data   = Complaint::where('complaints.client_id',$client_id)->get();
-        return 
-            DataTables::of($data)
-                ->addColumn('client_name',function($data){
-                    if(isset($data->client->fullname)){
-                        return $data->client->fullname;
-                    }else{
-                        return "";
-                    }
-                })
-
-                ->addColumn('action',function($data){
-                    return '<div class="btn-group btn-group">
-                                <a class="btn btn-info btn-xs" href="complaint/'.$data->id.'">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>';
-                })
-
-                ->addColumn('srno','')
-                ->rawColumns(['srno','','client_name','action'])
-                ->make(true);
-    }
-
-    public function showComplaint($complaint_id)
-    {
-        $data      = Complaint::findorFail($complaint_id);
-        return view('clients.complaint',compact('data'));
-    }
-
     public function create()
     {
         $clients        = Client::pluck('fullname','id')->all();
@@ -283,11 +250,7 @@ class ClientController extends Controller
                                             'boxes',
                                             'products',
                                             'ibeacons',
-<<<<<<< Updated upstream
-                                            'complaints',
-=======
                                             'complaints'
->>>>>>> Stashed changes
                                         ));
     }
 

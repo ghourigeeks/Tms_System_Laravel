@@ -27,31 +27,29 @@
                                         <tbody>
 
                                             <tr>
-                                                <td width="30%">Package name</td>
+                                                <th width="30%">Package name</th>
                                                 <td>
-                                                        {{ isset($data->name) ? ($data->name) : ""}}
+                                                    {{ isset($data->name) ? ($data->name) : ""}}
+                                                </td>
+                                                <th>Amount</th>
+                                                <td>
+                                                    {{ isset($data->amount) ? ($data->amount) : ""}}
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
-                                                <td width="30%">Amount</td>
+                                                <th>Box limit</th>
                                                 <td>
-                                                        {{ isset($data->amount) ? ($data->amount) : ""}}
+                                                    {{ isset($data->box_limit) ? ($data->box_limit) : ""}}
+                                                </td>
+                                                <th>Inventory limit</th>
+                                                <td>
+                                                    {{ isset($data->inventory_limit) ? ($data->inventory_limit) : ""}}
                                                 </td>
                                             </tr>
+                                           
                                             <tr>
-                                                <td width="30%">Box limit</td>
-                                                <td>
-                                                        {{ isset($data->box_limit) ? ($data->box_limit) : ""}}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="30%">Inventory limit</td>
-                                                <td>
-                                                        {{ isset($data->inventory_limit) ? ($data->inventory_limit) : ""}}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="30%">Marketplace</td>
+                                                <th>Marketplace</th>
                                                 <td>
                                                     @if((isset($data->add_to_mp)) && ( ($data->add_to_mp == 1) || ($data->add_to_mp == "Active") ) )
                                                         <span class="badge badge-success">Active</span>
@@ -59,9 +57,7 @@
                                                         <span class="badge badge-danger">Inactive</span>
                                                     @endif
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="30%">Ibeacon</td>
+                                                <th>Ibeacon</th>
                                                 <td>
                                                     @if((isset($data->ibeacon)) && ( ($data->ibeacon == 1) || ($data->ibeacon == "Active") ) )
                                                         <span class="badge badge-success">Active</span>
@@ -70,8 +66,9 @@
                                                     @endif
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
-                                                <td width="30%">Barcode</td>
+                                                <th>Barcode</th>
                                                 <td>
                                                     @if((isset($data->barcode)) && ( ($data->barcode == 1) || ($data->barcode == "Active") ) )
                                                         <span class="badge badge-success">Active</span>
@@ -79,9 +76,7 @@
                                                         <span class="badge badge-danger">Inactive</span>
                                                     @endif
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="30%">Qrcode</td>
+                                                <th>Qrcode</th>
                                                 <td>
                                                     @if((isset($data->qrcode)) && ( ($data->qrcode == 1) || ($data->qrcode == "Active") ) )
                                                         <span class="badge badge-success">Active</span>
@@ -90,8 +85,9 @@
                                                     @endif
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
-                                                <td>Status</td>
+                                                <th>Status</th>
                                                 <td>
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )
                                                         <span class="badge badge-success">Active</span>

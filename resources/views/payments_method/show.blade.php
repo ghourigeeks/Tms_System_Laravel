@@ -27,25 +27,25 @@
                                         <tbody>
 
                                             <tr>
-                                                <td width="30%">Payment name</td>
+                                                <th width="30%">Payment name</th>
                                                 <td>
                                                         {{ isset($data->name) ? ($data->name) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="30%">Public key</td>
+                                                <th width="30%">Public key</th>
                                                 <td>
                                                         {{ isset($data->public_key) ? ($data->public_key) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="30%">Private key</td>
+                                                <th width="30%">Private key</th>
                                                 <td>
                                                         {{ isset($data->private_key) ? ($data->private_key) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Status</td>
+                                                <th>Status</th>
                                                 <td>
                                                 
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )

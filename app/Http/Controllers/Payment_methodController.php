@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use DataTables;
+use Str;
 use App\Models\Payment_method;
 use Illuminate\Http\Request;
 use App\Http\Requests\Payment_methodRequest;
@@ -38,6 +39,13 @@ class Payment_methodController extends Controller
                     ->get();
         return 
             DataTables::of($data)
+                ->addColumn('public_key',function($data){
+                    return (isset($data->public_key)) ? (Str::of($data->public_key)->limit(30)) : "";
+                })
+                ->addColumn('private_key',function($data){
+                    return (isset($data->private_key)) ? (Str::of($data->private_key)->limit(30)) : "";
+                })
+
                 ->addColumn('action',function($data){
                     return '
                     <div class="btn-group btn-group">

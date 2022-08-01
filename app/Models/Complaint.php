@@ -27,9 +27,15 @@ class Complaint extends Model
     public function getCreatedAtAttribute($value)
     {
         if($value){
-            return Carbon::parse($value)->format('D - h:i A');
+            return Carbon::parse($value)->format('d-M-Y , h:i A');
         }    
     }
+    // public function getMonthAttribute($value)
+    // {
+    //     if($value){
+    //         return Carbon::parse($value)->format('d-M-Y , h:i A');
+    //     }    
+    // }
     public function client()
     {
         $clients = $this->belongsTo(Client::class,'client_id','id');

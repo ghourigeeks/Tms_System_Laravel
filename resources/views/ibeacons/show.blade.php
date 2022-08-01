@@ -27,19 +27,19 @@
                                         <tbody>
 
                                             <tr>
-                                                <td width="30%">Client name</td>
+                                                <th width="30%">Client name</th>
                                                 <td>
                                                         {{ isset($data->client->fullname) ? ($data->client->fullname) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="30%">Serial No:</td>
+                                                <th width="30%">Serial No:</th>
                                                 <td>
                                                         {{ isset($data->serial_no) ? ($data->serial_no) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Status</td>
+                                                <th>Status</th>
                                                 <td>
                                                 
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )

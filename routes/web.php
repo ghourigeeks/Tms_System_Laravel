@@ -65,11 +65,7 @@
 
 
 			Route::get('/complaints/{id}', [ClientController::class, 'complaints']);
-<<<<<<< Updated upstream
-			Route::get('/complaints_lst/{id}', [ClientController::class, 'complaints_lst']);
-=======
 			Route::get('/fetchComplaints/{id}', [ClientController::class, 'fetchComplaints']);
->>>>>>> Stashed changes
 			Route::get('/complaints/complaint/{id}', [ClientController::class, 'showComplaint']);
 
 		});
@@ -167,7 +163,7 @@
 
 	// BEGIN::complaint_tags
 		Route::resource('/complaints', ComplaintController::class);
-		// Route::get('/lst_complaint_tags', [Complaint_tagController::class, 'list']);
+		Route::get('/lst_complaint', [ComplaintController::class, 'list']);
 		// Route::delete('/del_complaint_tag', [Complaint_tagController::class, 'destroy']);
 	// BEGIN::complaint_tags
 

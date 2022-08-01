@@ -30,7 +30,7 @@
                                     <th>Qty</th>
                                     <th>QRcode</th>
                                     <th>Barcode </th>
-                                    <th>Added to MarketPlace </th>
+                                    <th width="18%" data-toggle="tooltip" data-placement="top" title="This product is added to Marketplace">Marketplace</th>
                                     <th width="10%" >Action</th>
                                 </tr>
                             </thead>
@@ -42,6 +42,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 
 <script>
     $(document).ready(function () {  
