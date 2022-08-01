@@ -79,4 +79,9 @@ class Client extends Authenticatable
     {
         return $this->belongsTo(Country::class,'country_id','id');
     }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
 }
