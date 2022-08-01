@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Box;
 use App\Models\Product;
 use App\Models\Ibeacon;
+use App\Models\Complaint;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
 use App\Http\Controllers\Controller;
@@ -175,6 +176,48 @@ class ClientController extends Controller
     }
 
 
+    public function complaints($id)
+    {
+        $data       = Complaint::where('complaints.client_id', $id)->first();
+
+        if((empty($data))){
+            return Redirect::back()->withErrors(['msg' => 'No complaint found!']);
+        }
+        return view('clients.complaints',compact('data','id'));
+    }
+    
+    public function complaints_lst($client_id)
+    {
+        $data   = Complaint::where('complaints.client_id',$client_id)->get();
+        return 
+            DataTables::of($data)
+                ->addColumn('client_name',function($data){
+                    if(isset($data->client->fullname)){
+                        return $data->client->fullname;
+                    }else{
+                        return "";
+                    }
+                })
+
+                ->addColumn('action',function($data){
+                    return '<div class="btn-group btn-group">
+                                <a class="btn btn-info btn-xs" href="complaint/'.$data->id.'">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>';
+                })
+
+                ->addColumn('srno','')
+                ->rawColumns(['srno','','client_name','action'])
+                ->make(true);
+    }
+
+    public function showComplaint($complaint_id)
+    {
+        $data      = Complaint::findorFail($complaint_id);
+        return view('clients.complaint',compact('data'));
+    }
+
     public function create()
     {
         $clients        = Client::pluck('fullname','id')->all();
@@ -197,12 +240,14 @@ class ClientController extends Controller
         $boxes          = Box::where('client_id', $id)->count();
         $products       = Product::where('client_id', $id)->count();
         $ibeacons       = Ibeacon::where('client_id', $id)->count();
+        $complaints     = Complaint::where('client_id', $id)->count();
 
         return view('clients.show',compact(
                                             'data',
                                             'boxes',
                                             'products',
                                             'ibeacons',
+                                            'complaints',
                                         ));
     }
 
