@@ -30,7 +30,7 @@ class Complaint extends Model
             return Carbon::parse($value)->format('D - h:i A');
         }    
     }
-    public function Clients()
+    public function client()
     {
         $clients = $this->belongsTo(Client::class,'client_id','id');
         return $clients;

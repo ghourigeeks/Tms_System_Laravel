@@ -6,7 +6,7 @@
     <div class="page-inner">
         <h4 class="page-title">@yield('title') Profile</h4>
         <div class="row row-card-no-pd">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-3">
                 <div class="card card-stats card-round">
                     <div class="card-body ">
                         <div class="row">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-3">
                 <div class="card card-stats card-round">
                     <div class="card-body ">
                         <div class="row">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-3">
                 <div class="card card-stats card-round">
                     <div class="card-body">
                         <div class="row">
@@ -74,6 +74,30 @@
                                             Ibeacons
                                         @endif
                                     <h4 class="card-title"> {{ isset($ibeacons) ? ($ibeacons) : 0}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-envelope text-primary" style="font-size:2.4rem"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats">
+                                <div class="numbers">
+                                    <p class="card-category">
+                                        @if((isset($complaints))  && ($complaints > 0) )
+                                            <a href="{{ url('clients')}}/complaints/{{$data->id}}"> Complaints</a>
+                                        @else
+                                            Complaints
+                                        @endif
+                                    <h4 class="card-title"> {{ isset($complaints) ? ($complaints) : 0}}</h4>
                                 </div>
                             </div>
                         </div>

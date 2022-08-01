@@ -12,7 +12,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
+<<<<<<< Updated upstream
                         <h4 class="card-title"> @yield('title') Complaint devices </h4>
+=======
+                        <h4 class="card-title"> @yield('title') Complaints </h4>
+>>>>>>> Stashed changes
                         <a  href="{{ url('clients')}}/{{$id}}" class="btn btn-primary btn-xs ml-auto">
                             <i class="fas fa-arrow-left"></i>
                         </a>
@@ -25,9 +29,14 @@
                             <thead>
                                 <tr>
                                     <th width="5%">#</th>
+<<<<<<< Updated upstream
                                     <th>Client name#</th>
                                     <th>Subject</th>
                                     <th>Complaint</th>
+=======
+                                    <th>Subject</th>
+                                    <th width="8%"> Active</th>
+>>>>>>> Stashed changes
                                     <th width="10%" >Action</th>
                                 </tr>
                             </thead>
@@ -47,6 +56,7 @@
                 "processing": true,
                 "serverSide": false,
                 "select":true,
+<<<<<<< Updated upstream
                 "ajax": "{{ url('clients') }}/complaints_lst/{{$id}}",
                 "method": "GET",
                 "columns": [
@@ -54,6 +64,14 @@
                     {"data": "client_id"},
                     {"data": "subject"},
                     {"data": "complaint"},
+=======
+                "ajax": "{{ url('clients') }}/fetchComplaints/{{$id}}",
+                "method": "GET",
+                "columns": [
+                    {"data": "srno"},
+                    {"data": "subject"},
+                    {"data": "active"},
+>>>>>>> Stashed changes
                     {"data": "action",orderable:false,searchable:false}
 
                 ]

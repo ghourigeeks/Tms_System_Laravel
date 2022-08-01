@@ -82,7 +82,7 @@ class ClientController extends Controller
         return view('clients.boxes',compact('data','id'));
     }
 
-    public function boxes_lst($client_id)
+    public function fetchBoxes($client_id)
     {
         $data   = Box::where('boxes.client_id',$client_id)->get();
         return 
@@ -116,7 +116,7 @@ class ClientController extends Controller
         return view('clients.products',compact('data','id'));
     }
 
-    public function products_lst($client_id)
+    public function fetchProducts($client_id)
     {
         $data   = Product::where('products.client_id',$client_id)->get();
         return 
@@ -150,7 +150,7 @@ class ClientController extends Controller
         return view('clients.ibeacons',compact('data','id'));
     }
     
-    public function ibeacons_lst($client_id)
+    public function fetchIbeacons($client_id)
     {
         $data   = Ibeacon::where('ibeacons.client_id',$client_id)->get();
 
@@ -174,6 +174,42 @@ class ClientController extends Controller
         $data      = Ibeacon::findorFail($ibeacon_id);
         return view('clients.ibeacon',compact('data'));
     }
+
+    public function complaints($id)
+    {
+        $data       = Complaint::where('complaints.client_id', $id)->first();
+
+        if((empty($data))){
+            return Redirect::back()->withErrors(['msg' => 'No complaint found!']);
+        }
+        return view('clients.complaints',compact('data','id'));
+    }
+    
+    public function fetchComplaints($client_id)
+    {
+        $data   = Complaint::where('complaints.client_id',$client_id)->get();
+
+        return 
+            DataTables::of($data)
+                ->addColumn('action',function($data){
+                    return '<div class="btn-group btn-group">
+                                <a class="btn btn-info btn-xs" href="complaint/'.$data->id.'">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>';
+                })
+
+                ->addColumn('srno','')
+                ->rawColumns(['srno','','action'])
+                ->make(true);
+    }
+
+    public function showComplaint($complaint_id)
+    {
+        $data      = Complaint::findorFail($complaint_id);
+        return view('clients.complaint',compact('data'));
+    }
+
 
 
     public function complaints($id)
@@ -247,7 +283,11 @@ class ClientController extends Controller
                                             'boxes',
                                             'products',
                                             'ibeacons',
+<<<<<<< Updated upstream
                                             'complaints',
+=======
+                                            'complaints'
+>>>>>>> Stashed changes
                                         ));
     }
 

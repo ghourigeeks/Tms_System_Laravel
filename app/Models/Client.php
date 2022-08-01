@@ -65,7 +65,7 @@ class Client extends Authenticatable
     {
         return ucwords($value);
     }
-    public function complaints()
+    public function complaint()
     {
         return $this->belongsTo(Complaint::class,'client_id','id');
     }

@@ -50,7 +50,7 @@
                 "processing": true,
                 "serverSide": false,
                 "select":true,
-                "ajax": "{{ url('clients') }}/products_lst/{{$id}}",
+                "ajax": "{{ url('clients') }}/fetchProducts/{{$id}}",
                 "method": "GET",
                 "columns": [
                     {"data": "srno"},

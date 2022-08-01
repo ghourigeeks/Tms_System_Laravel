@@ -48,7 +48,7 @@
                 "processing": true,
                 "serverSide": false,
                 "select":true,
-                "ajax": "{{ url('clients') }}/boxes_lst/{{$id}}",
+                "ajax": "{{ url('clients') }}/fetchBoxes/{{$id}}",
                 "method": "GET",
                 "columns": [
                     {"data": "srno"},

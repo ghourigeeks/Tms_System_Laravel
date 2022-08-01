@@ -1,10 +1,15 @@
 @extends('layouts.main')
+<<<<<<< Updated upstream
 @section('title','Complaint')
+=======
+@section('title','Client')
+>>>>>>> Stashed changes
 @section('content')
     @include( '../sweet_script')
 
     <div class="page-inner">
         <div class="page-header">
+<<<<<<< Updated upstream
             <h4 class="page-title">@yield('title')</h4>
         </div>
         <div class="row">
@@ -16,10 +21,28 @@
                             <a  href="{{ route('complaints.index') }}" class="btn btn-primary btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
+=======
+            <h4 class="page-title">@yield('title'):  {{ isset($data->client->fullname) ? ($data->client->fullname) : ""}}</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">@yield('title') Complaint</h4>
+                            <span class="ml-auto">
+                                @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )
+                                    <span class="badge badge-success">Active</span>
+                                @else
+                                    <span class="badge badge-danger">Inactive</span>
+                                @endif
+                            </span>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
+<<<<<<< Updated upstream
                             <div class="col-12 col-md-12">
                                 <div class="invoice-header row">
                                     <div class="invoice-title col-md-10">
@@ -100,6 +123,40 @@
         });
     });
 </script>
+=======
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="table-responsive">
+                                    <table class="table dt-responsive">
+                                        <tbody>
+                                            <tr>
+                                                <th width="30%">Subject</th>
+                                                <td>{{$data->subject}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Complaint</th>
+                                                <td>{{ isset($data->complaint) ? ($data->complaint) : ""}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Response/ reply</th>
+                                                <td>{{ isset($data->res) ? ($data->res) : ""}}</td>
+                                            </tr>
+
+                                        
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> Stashed changes
     
 
 @endsection

@@ -15,18 +15,11 @@
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with dropdown button">
                             <div class="input-group-append">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
+                                <button class="btn btn-primary" type="button" >Search</button>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-success d-none d-sm-inline-block">New Message</button>
+                    <!-- <button type="button" class="btn btn-success d-none d-sm-inline-block">New Message</button> -->
                 </div>
 
                 <section class="card mt-4">
@@ -35,8 +28,8 @@
                             <div class="list-group-item unread">
                                 <div class="list-group-item-figure">
                                     <a href="{{route('complaints.show',$complaint->id)}}" class="user-avatar">
-                                        <div class="avatar avatar-online">
-                                            <img src="{{$complaint->clients->profile_pic}}" alt="..." class="avatar-img rounded-circle">
+                                        <div class="avatar">
+                                            <img src="{{$complaint->client->profile_pic}}" alt="..." class="avatar-img rounded-circle">
                                         </div>
                                     </a>
                                 </div>
@@ -44,16 +37,28 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-10">
                                             <h4 class="list-group-item-title">
-                                                <a href="{{route('complaints.show',$complaint->id)}}">{{$complaint->clients->fullname}}</a>
+                                                <a href="{{route('complaints.show',$complaint->id)}}">
+                                                    @if(isset($complaint->client->fullname))
+                                                        {{$complaint->client->fullname}} 
+                                                    @endif
+                                                </a>
                                             </h4>
-                                            <p class="list-group-item-text text-truncate"> {{Str::of($complaint->subject)->limit(30)}} </p>
+                                            <p class="list-group-item-text text-truncate">
+                                                @if(isset($complaint->subject))
+                                                    {{Str::of($complaint->subject)->limit(30)}} 
+                                                @endif
+                                            </p>
                                         </div>
                                         <div class="col-12 col-lg-2 text-lg-right">
-                                            <p class="list-group-item-text"> {{$complaint->created_at}} </p>
+                                            <p class="list-group-item-text"> 
+                                                @if(isset($complaint->created_at))
+                                                    {{$complaint->created_at}} 
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group-item-figure">
+                                <!-- <div class="list-group-item-figure">
                                     <div class="dropdown">
                                         <button class="btn-dropdown" data-toggle="dropdown">
                                             <i class="fa fa-ellipsis-v"></i>
@@ -66,7 +71,7 @@
                                             <a href="#" class="dropdown-item">Trash</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         @endforeach
                     </div>

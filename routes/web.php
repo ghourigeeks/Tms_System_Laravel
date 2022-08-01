@@ -50,22 +50,26 @@
 
 		Route::group(['prefix' => 'clients'], function () {
 			Route::get('/boxes/{id}', [ClientController::class, 'boxes']);
-			Route::get('/boxes_lst/{id}', [ClientController::class, 'boxes_lst']);
+			Route::get('/fetchBoxes/{id}', [ClientController::class, 'fetchBoxes']);
 			Route::get('/boxes/box/{id}', [ClientController::class, 'showBox']);
 
 
 			Route::get('/products/{id}', [ClientController::class, 'products']);
-			Route::get('/products_lst/{id}', [ClientController::class, 'products_lst']);
+			Route::get('/fetchProducts/{id}', [ClientController::class, 'fetchProducts']);
 			Route::get('/products/product/{id}', [ClientController::class, 'showProduct']);
 
 
 			Route::get('/ibeacons/{id}', [ClientController::class, 'ibeacons']);
-			Route::get('/ibeacons_lst/{id}', [ClientController::class, 'ibeacons_lst']);
+			Route::get('/fetchIbeacons/{id}', [ClientController::class, 'fetchIbeacons']);
 			Route::get('/ibeacons/ibeacon/{id}', [ClientController::class, 'showIbeacon']);
 
 
 			Route::get('/complaints/{id}', [ClientController::class, 'complaints']);
+<<<<<<< Updated upstream
 			Route::get('/complaints_lst/{id}', [ClientController::class, 'complaints_lst']);
+=======
+			Route::get('/fetchComplaints/{id}', [ClientController::class, 'fetchComplaints']);
+>>>>>>> Stashed changes
 			Route::get('/complaints/complaint/{id}', [ClientController::class, 'showComplaint']);
 
 		});
@@ -132,7 +136,6 @@
 		Route::get('/lst_status', [StatusController::class, 'list']);
 		Route::delete('/del_status', [StatusController::class, 'destroy']);
 	// BEGIN::statuses
-	
 
 	
 	// BEGIN::complaint_tags

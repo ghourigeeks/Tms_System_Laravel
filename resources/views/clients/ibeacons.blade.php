@@ -45,7 +45,7 @@
                 "processing": true,
                 "serverSide": false,
                 "select":true,
-                "ajax": "{{ url('clients') }}/ibeacons_lst/{{$id}}",
+                "ajax": "{{ url('clients') }}/fetchIbeacons/{{$id}}",
                 "method": "GET",
                 "columns": [
                     {"data": "srno"},
