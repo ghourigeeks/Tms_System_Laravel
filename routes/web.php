@@ -63,6 +63,11 @@
 			Route::get('/ibeacons_lst/{id}', [ClientController::class, 'ibeacons_lst']);
 			Route::get('/ibeacons/ibeacon/{id}', [ClientController::class, 'showIbeacon']);
 
+
+			Route::get('/complaints/{id}', [ClientController::class, 'complaints']);
+			Route::get('/complaints_lst/{id}', [ClientController::class, 'complaints_lst']);
+			Route::get('/complaints/complaint/{id}', [ClientController::class, 'showComplaint']);
+
 		});
 
 
