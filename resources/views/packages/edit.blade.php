@@ -204,7 +204,6 @@
             $('#form').submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
-                
                 $.ajax({
                     type: 'POST',
                     url: "{{ route('packages.update',$data->id) }}",

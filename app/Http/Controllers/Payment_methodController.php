@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
-use DataTables;
 use Str;
+use DataTables;
 use App\Models\Payment_method;
 use Illuminate\Http\Request;
 use App\Http\Requests\Payment_methodRequest;

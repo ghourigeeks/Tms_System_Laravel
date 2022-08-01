@@ -3,8 +3,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use DataTables;
-use App\Models\Client;
 use App\Models\Box;
+use App\Models\Client;
 use App\Models\Product;
 use App\Models\Ibeacon;
 use App\Models\Complaint;

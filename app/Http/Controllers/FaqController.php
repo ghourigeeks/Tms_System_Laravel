@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Str;
 use DataTables;
 use App\Models\Faq;
 use Illuminate\Http\Request;
@@ -37,6 +38,12 @@ class FaqController extends Controller
                     ->get();
         return 
             DataTables::of($data)
+                ->addColumn('question',function($data){
+                    return (isset($data->question)) ? (Str::of($data->question)->limit(30)) : "";
+                })
+                ->addColumn('description',function($data){
+                    return (isset($data->description)) ? (Str::of($data->description)->limit(30)) : "";
+                })
                 ->addColumn('action',function($data){
                     return '
                     <div class="btn-group btn-group">
