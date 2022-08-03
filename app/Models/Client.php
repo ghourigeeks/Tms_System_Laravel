@@ -41,8 +41,8 @@ class Client extends Authenticatable
     public function getProfilePicAttribute($value)
     {
         return ( isset($value) && (file_exists( public_path('uploads/clients/'.$value) ))) 
-            ? asset('/uploads/clients/'.$value)
-            : asset('/uploads/no_image.png');
+            ? asset('uploads/clients/'.$value)
+            : asset('uploads/no_image.png');
     }
 
 

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','People')
+@section('title','Client')
 @section('content')
 
 @include( '../sweet_script')
@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Edit @yield('title')</h4>
-                        <a  href="{{ route('peoples.index') }}" class="btn btn-primary btn-xs ml-auto">
+                        <a  href="{{ route('clients.index') }}" class="btn btn-primary btn-xs ml-auto">
                             <i class="fas fa-arrow-left"></i>
                         </a>
                         
@@ -30,9 +30,9 @@
                                 <div class="col-10">
                                     <div class="form-group">
                                         {!! Html::decode(Form::label('fname','Full name <span class="text-danger">*</span>')) !!}
-                                        {{ Form::text('fname', null, array('placeholder' => 'Enter full name','class' => 'form-control','autofocus' => '', 'required'=>''  )) }}
-                                        @if ($errors->has('fname'))  
-                                            {!! "<span class='span_danger'>". $errors->first('fname')."</span>"!!} 
+                                        {{ Form::text('fullname', null, array('placeholder' => 'Enter full name','class' => 'form-control','autofocus' => '', 'required'=>''  )) }}
+                                        @if ($errors->has('fullname'))  
+                                            {!! "<span class='span_danger'>". $errors->first('fullname')."</span>"!!} 
                                         @endif
                                     </div>
                                 </div>
@@ -62,10 +62,10 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('contact_no','Contact# <span class="text-danger">*</span>')) !!}
-                                        {!! Form::text('contact_no', null, array('placeholder' => 'Enter contact#','class' => 'form-control','required'=>'')) !!}
-                                        @if ($errors->has('contact_no'))  
-                                            {!! "<span class='span_danger'>". $errors->first('contact_no')."</span>"!!} 
+                                        {!! Html::decode(Form::label('phone_no','Contact# <span class="text-danger">*</span>')) !!}
+                                        {!! Form::text('phone_no', null, array('placeholder' => 'Enter contact#','class' => 'form-control','required'=>'')) !!}
+                                        @if ($errors->has('phone_no'))  
+                                            {!! "<span class='span_danger'>". $errors->first('phone_no')."</span>"!!} 
                                         @endif
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
             
             $.ajax({
                 type: 'POST',
-                url: "{{ route('peoples.update',$data->id) }}",
+                url: "{{ route('clients.update',$data->id) }}",
                 data: formData,
                 cache: false,
                 contentType: false,

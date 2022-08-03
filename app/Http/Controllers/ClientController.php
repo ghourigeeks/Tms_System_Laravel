@@ -258,8 +258,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         $data           = Client::findorFail($id);
-        $provinces      = Client::pluck('name','id')->all();  
-        return view('clients.edit',compact('data','provinces'));
+        return view('clients.edit',compact('data'));
     }
 
 

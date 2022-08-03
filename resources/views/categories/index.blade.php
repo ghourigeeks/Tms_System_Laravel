@@ -45,7 +45,7 @@
                     "processing": true,
                     "serverSide": false,
                     "select":true,
-                    "ajax": "{{ url('list_category') }}",
+                    "ajax": "{{ url('lst_category') }}",
                     "method": "GET",
                     "columns": [
                         {"data": "srno"},

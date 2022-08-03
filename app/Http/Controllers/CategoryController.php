@@ -26,7 +26,7 @@ class CategoryController extends Controller
         return view('categories.index');
     }
 
-    public function list_category()
+    public function list()
     {
         $data   = Category::orderBy('categories.name')
                     ->select(
@@ -75,13 +75,16 @@ class CategoryController extends Controller
                     'created_by' => Auth::user()->id
                 ]); 
 
-                // Creating multiple sub-categories
-                foreach ($request->sub_cat as $key => $value) {
-                    $sub_category = Sub_category::create([
-                        'name' => $value,
-                        'cat_id' => $category->id
-                    ]);
+                if((isset($request->sub_cat)) && (!(empty($request->sub_cat))) && (count($request->sub_cat)>0)){
+                      // Creating multiple sub-categories
+                    foreach ($request->sub_cat as $key => $value) {
+                        $sub_category = Sub_category::create([
+                            'name' => $value,
+                            'cat_id' => $category->id
+                        ]);
+                    }
                 }
+              
 
             });
 

@@ -24,8 +24,8 @@ class CreateClientsTable extends Migration
             $table->string('phone_no',15)->unique()->nullable();
             $table->string('password');
             $table->text('address')->nullable();
-            $table->unsignedInteger('region_id');
-            $table->unsignedInteger('country_id');
+            $table->unsignedInteger('region_id')->nullable();
+            $table->unsignedInteger('country_id')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('profile_pic')->nullable();

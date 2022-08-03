@@ -39,7 +39,7 @@
                                     <table class="table" id="sub_cat_table">
                                         <thead>
                                             <tr>
-                                                <th>{!! Html::decode(Form::label('sub_cat','Sub Category name <span class="text-danger">*</span>')) !!}</th>
+                                                <th>{!! Html::decode(Form::label('sub_cat','Sub Category name')) !!}</th>
                                             </tr>
                                         </thead>
                                         <tbody>

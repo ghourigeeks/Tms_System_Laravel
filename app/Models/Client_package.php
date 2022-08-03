@@ -4,17 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Complaint_tag extends Model
+
+class Client_package extends Model
 {
-    use HasFactory, SoftDeletes;
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'name',
-        'active',
-        'created_by',
-        'updated_by'
+        'client_id',
+        'package_id',
+        'active'
     ];
 
     public function getActiveAttribute($value)
@@ -22,8 +21,10 @@ class Complaint_tag extends Model
         return ($value == 1) ? "Active" : "Inactive";
     }
 
-    public function getNameAttribute($value)
+   
+    public function client()
     {
-        return ucwords($value);
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
+
 }
