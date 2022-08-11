@@ -6,6 +6,7 @@ use DB;
 use DataTables;
 use App\Models\Box;
 use App\Models\Client;
+use App\Models\Box_product;
 use Illuminate\Http\Request;
 use App\Http\Requests\BoxRequest;
 use App\Http\Controllers\Controller;
@@ -90,7 +91,10 @@ class BoxController extends Controller
     public function show(Box $box)
     {
         $data         = Box::findorFail($box->id);
-        return view('boxes.show',compact('data'));
+        $boxProducts  = Box_product::where('box_id', $box->id)->get();
+
+
+        return view('boxes.show',compact('data','boxProducts'));
     }
 
 

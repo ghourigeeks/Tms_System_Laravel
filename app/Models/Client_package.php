@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Client;
+use App\Models\Package;
 
 
 class Client_package extends Model
@@ -25,6 +27,11 @@ class Client_package extends Model
     public function client()
     {
         return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class, 'package_id', 'id');
     }
 
 }

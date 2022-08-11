@@ -14,6 +14,11 @@ use App\Events\Message;
     Route::post("resetPassword",[MainController::class, 'resetPassword']);
     Route::get("fetchPackages",[MainController::class, 'fetchPackages']);
     Route::get("fetchPaymentMethods",[MainController::class, 'fetchPaymentMethods']);
+    Route::get("fetchProfile/{client_id}",[MainController::class, 'fetchProfile']);
+    Route::post("updateProfile",[MainController::class, 'updateProfile']);
+    Route::get("fetchDashboard/{client_id}",[MainController::class, 'fetchDashboard']);
+    Route::get("fetchCategory",[MainController::class, 'fetchCategory']);
+    Route::get("fetchSubCategory/{cat_id}",[MainController::class, 'fetchSubCategory']);
     
     Route::post("logout",[MainController::class, 'logout']);
 
@@ -27,8 +32,4 @@ use App\Events\Message;
 
     */
 
-    Route::fallback(function() {
-        return 'Route does not exist !';
-    });
-
-    
+ 

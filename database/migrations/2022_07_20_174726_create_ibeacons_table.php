@@ -16,6 +16,7 @@ class CreateIbeaconsTable extends Migration
         Schema::create('ibeacons', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('client_id');
+            $table->unsignedInteger('box_id');
             $table->string('serial_no');
             $table->boolean('active')->nullable()->default(1)->comment('null = inactive and 1 = active'); ;
             $table->softDeletes();

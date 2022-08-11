@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->string('barcode',25)->nullable();
             $table->string('lat',25)->nullable();
             $table->string('lng',25)->nullable();
+            $table->unsignedInteger('qty_to_mp')->nullable()->default(0)->comment('mp = marketplace null = false and 1 = true'); 
             $table->boolean('added_to_mp')->nullable()->default(0)->comment('mp = marketplace null = false and 1 = true'); 
             $table->boolean('active')->nullable()->default(1)->comment('null = inactive and 1 = active'); 
             $table->softDeletes();

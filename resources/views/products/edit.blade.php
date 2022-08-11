@@ -66,6 +66,18 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
+                                        {!! Html::decode(Form::label('qty','Product quantity <span class="text-danger">*</span>')) !!}
+                                        {{ Form::number('qty', null, array('placeholder' => 'Enter product quantity','class' => 'form-control','autofocus' => ''  )) }}
+                                        @if ($errors->has('qty'))  
+                                            {!! "<span class='span_danger'>". $errors->first('qty')."</span>"!!} 
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
                                         {!! Html::decode(Form::label('category_id','Category name<span class="text-danger"> *</span>')) !!}
                                         {!! Form::select('category_id', ['' => 'Please select']+ $category,[$category_id->id], array('class' => 'form-control', 'id' => 'category_id')) !!}
                                         @if ($errors->has('category_id'))  
@@ -73,8 +85,7 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="col-6">
                                     <div class="form-group">
                                         {!! Html::decode(Form::label('sub_category_id','Subcategory name<span class="text-danger"> *</span>')) !!}
@@ -84,35 +95,29 @@
                                         @endif
                                     </div>
                                 </div>
+                                
+                            </div>
+                            <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('qrcode','Product qrcode <span class="text-danger">*</span>')) !!}
-                                        {{ Form::text('qrcode', null, array('placeholder' => 'Enter product qrcode','class' => 'form-control','autofocus' => ''  )) }}
+                                        {!! Html::decode(Form::label('qrcode','Product QRcode <span class="text-danger">*</span>')) !!}
+                                        {{ Form::text('qrcode', null, array('placeholder' => 'Enter product QRcode','class' => 'form-control','autofocus' => ''  )) }}
                                         @if ($errors->has('qrcode'))  
                                             {!! "<span class='span_danger'>". $errors->first('qrcode')."</span>"!!} 
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="col-6">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('barcode','Product barcode <span class="text-danger">*</span>')) !!}
-                                        {{ Form::text('barcode', null, array('placeholder' => 'Enter product barcode','class' => 'form-control','autofocus' => ''  )) }}
+                                        {!! Html::decode(Form::label('barcode','Product Barcode <span class="text-danger">*</span>')) !!}
+                                        {{ Form::text('barcode', null, array('placeholder' => 'Enter product Barcode','class' => 'form-control','autofocus' => ''  )) }}
                                         @if ($errors->has('barcode'))  
                                             {!! "<span class='span_danger'>". $errors->first('barcode')."</span>"!!} 
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        {!! Html::decode(Form::label('qty','Product quantity <span class="text-danger">*</span>')) !!}
-                                        {{ Form::number('qty', null, array('placeholder' => 'Enter product quantity','class' => 'form-control','autofocus' => ''  )) }}
-                                        @if ($errors->has('qty'))  
-                                            {!! "<span class='span_danger'>". $errors->first('qty')."</span>"!!} 
-                                        @endif
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="row">
                                 <div class="col-6">

@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('client_id','Client ID')) !!}<span class="text-danger"> *</span>
+                                        {!! Html::decode(Form::label('client_id','Client')) !!}<span class="text-danger"> *</span>
                                         {!! Form::select('client_id',['' => 'Please select']+ $clients,[$data->client_id], array('class' => 'form-control', 'id','autofocus' => 'region')) !!}
                                         @if ($errors->has('client_id'))  
                                             {!! "<span class='span_danger'>". $errors->first('client_id')."</span>"!!} 

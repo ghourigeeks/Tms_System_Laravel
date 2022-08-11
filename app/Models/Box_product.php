@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Ibeacon extends Model
+class Box_product extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'client_id',
         'box_id',
-        'serial_no',
+        'product_id',
+        'qty',
         'active',
     ];
 
@@ -22,15 +22,14 @@ class Ibeacon extends Model
         return ($value == 1) ? "Active" : "Inactive";
     }
 
-    public function client()
+
+    public function product()
     {
-        return $this->belongsTo(Client::class, 'client_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     public function box()
     {
-        return $this->belongsTo(Box::class, 'box_id', 'id')
-                ->select('id','name','price');
+        return $this->belongsTo(Box::class, 'box_id', 'id');
     }
-
 }

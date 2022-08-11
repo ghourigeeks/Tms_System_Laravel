@@ -4,6 +4,35 @@
     @include( '../sweet_script')
     <div class="page-inner">
         <div class="page-header">
+            <h4 class="page-title">Packages</h4>
+        </div>
+        <div class="row row-card-no-pd">
+            @foreach($packages as $key => $package)
+                <div class="col">
+                    <div class="card card-stats card-round">
+                        <div class="card-body ">
+                            <div class="row">
+                            
+                                <div class="col col-stats">
+                                    <center>
+                                        <div class="numbers">
+                                            <p class="card-category" >
+                                                @if((isset($package->name)) )
+                                                    {{$package->name}}
+                                                @endif
+                                                
+                                            </p>
+                                            <h4 class="card-title">{{ isset($packageHolders[$key]) ? ($packageHolders[$key]) : 0}} </h4>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div class="page-header">
             <h4 class="page-title">@yield('title')</h4>
         </div>
         <div class="row">
@@ -12,10 +41,10 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
-                            @can('client-create')
+                            <!-- @can('client-create')
                                 <a  href="{{ route('clients.create') }}" class="btn btn-primary btn-xs ml-auto">
                                 <i class="fa fa-plus"></i> New</a>
-                            @endcan
+                            @endcan -->
                         </div>
                     </div>
                     <div class="card-body">
@@ -26,7 +55,9 @@
                                         <th width="5%">#</th>
                                         <th width="60px"></th>
                                         <th> Full Name</th>
+                                        <th> Package</th>
                                         <th> Phone#</th>
+                                        <th> Region</th>
                                         <th> Country</th>
                                         <th> State</th>
                                         <th width="8%"> Active</th>
@@ -56,7 +87,9 @@
                         {"data": "srno"},
                         {"data": "profile_pic",orderable:false,searchable:false},
                         {"data": "fullname"},
+                        {"data": "package_name"},
                         {"data": "phone_no"},
+                        {"data": "region_name"},
                         {"data": "country_name"},
                         {"data": "state"},
                         {"data": "active",orderable:false,searchable:false},

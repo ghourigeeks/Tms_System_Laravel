@@ -158,7 +158,9 @@
                                         <tr>
                                             <th>Package subscription</th>
                                             <td>
-                                                {{ isset($detail->address) ? ($detail->address) :""}}
+                                                @if( (isset($clientPackage->package->name))  )
+                                                    <span class="badge badge-primary">{{$clientPackage->package->name}}</span>
+                                                @endif
                                             </td>
                                         </tr>
                                         <br>
@@ -184,15 +186,16 @@
                         <div class="user-profile text-center">
                             <div class="name">
                                 {{ucwords($data->fname)}} 
-                                @if(isset($data->verified) && $data->verified == 0 )
-                                    <i class="fas fa-times-circle" style="color:red;font-size:24px" data-toggle="tooltip" data-placement="top" title="Non-verified Profile"></i>
-                                @else
+
+                                @if(isset($data->verified) && (($data->verified == 1) || ($data->verified == "Verified")) )
                                     <i class="fas fa-check-circle" style="color:#4AD24E;font-size:24px" data-toggle="tooltip" data-placement="top" title="Verified Profile"></i>
+                                @else
+                                    <i class="fas fa-times-circle" style="color:red;font-size:24px" data-toggle="tooltip" data-placement="top" title="Non-verified Profile"></i>
                                 @endif 
                             </div>
                             <div class="name">{{  isset($data->email) ? ($data->email) : "" }}</div>
                             <div class="job">{{  isset($data->phone_no) ? ($data->phone_no) : "" }}</div>
-                            <div class="job">{{(isset($data->username) ? ($data->username) : "")}}</div>
+                            <div class="job">{{ (isset($data->username) ? ($data->username) : "")}}</div>
                           
                             
                             <!-- <div class="desc">A man who hates loneliness</div> -->

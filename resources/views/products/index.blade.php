@@ -27,6 +27,8 @@
                                         <th>Client name</th>
                                         <th>Product</th>
                                         <th>Price</th>
+                                        <th>Total Qty</th>
+                                        <th data-toggle="tooltip" data-placement="top" title="Qty in Marketplace">Qty in Marketplace</th>
                                         <th width="18%" data-toggle="tooltip" data-placement="top" title="This product is added to Marketplace">Marketplace</th>
                                         <th width="8%"> Active</th>
                                         <th width="10%" >Action</th>
@@ -61,6 +63,8 @@
                         {"data": "client_name"},
                         {"data": "name"},
                         {"data": "price"},
+                        {"data": "qty"},
+                        {"data": "qty_to_mp"},
                         {"data": "added_to_mp"},
                         {"data": "active",orderable:false,searchable:false},
                         {"data": "action",orderable:false,searchable:false}

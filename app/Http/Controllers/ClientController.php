@@ -8,6 +8,9 @@ use App\Models\Client;
 use App\Models\Product;
 use App\Models\Ibeacon;
 use App\Models\Complaint;
+use App\Models\Package;
+use App\Models\Client_package;
+use App\Models\Box_product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
 use App\Http\Controllers\Controller;
@@ -24,19 +27,37 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
-        return view('clients.index');
+        $packages       = Package::get();
+
+        $packageHolders = array() ;
+
+        if(!(empty($packages))){
+            foreach ($packages as $key => $package) {
+                if(isset($package->id)){
+                    $packageHolders[$package->id] = Client_package::where('client_packages.package_id', $package->id)->count(); 
+                }
+            }
+        }
+
+        return view('clients.index',compact('packages','packageHolders'));
+        // return view('clients.index');
     }
 
+   
     public function list()
     {
         $data   = Client::orderBy('clients.fullname')
                     ->leftjoin('regions', 'regions.id', '=', 'clients.region_id')
-                    ->leftjoin('countries', 'countries.id', '=', 'regions.id')
+                    ->leftjoin('countries', 'countries.id', '=', 'clients.country_id')
+                    ->leftjoin('client_packages', 'client_packages.client_id', '=', 'clients.id')
+                    ->leftjoin('packages', 'packages.id', '=', 'client_packages.package_id')
                     ->select(
                                 'clients.id',
                                 'clients.fullname',
                                 'clients.phone_no',
                                 'clients.state',
+                                'regions.name as region_name',
+                                'packages.name as package_name',
                                 'countries.name as country_name',
                                 'clients.profile_pic',
                                 'clients.active',
@@ -104,7 +125,10 @@ class ClientController extends Controller
     public function showBox($box_id)
     {
         $data      = Box::findorFail($box_id);
-        return view('clients.box',compact('data'));
+        $boxProducts  = Box_product::where('box_id', $box_id)->get();
+
+
+        return view('clients.box',compact('data','boxProducts'));
     }
 
     public function products($id)
@@ -223,6 +247,7 @@ class ClientController extends Controller
 
     public function create()
     {
+        abort(404);
         $clients        = Client::pluck('fullname','id')->all();
         return view('clients.create',compact('clients'));
     }
@@ -239,18 +264,22 @@ class ClientController extends Controller
 
     public function show($id)
     {
+    
         $data           = Client::findorFail($id);
         $boxes          = Box::where('client_id', $id)->count();
         $products       = Product::where('client_id', $id)->count();
         $ibeacons       = Ibeacon::where('client_id', $id)->count();
         $complaints     = Complaint::where('client_id', $id)->count();
-
+        $clientPackage  = Client_package::where('client_id', $id)->first();
+    
+     
         return view('clients.show',compact(
                                             'data',
                                             'boxes',
                                             'products',
                                             'ibeacons',
-                                            'complaints'
+                                            'complaints',
+                                            'clientPackage'
                                         ));
     }
 

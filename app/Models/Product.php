@@ -23,6 +23,7 @@ class Product extends Model
         'barcode',
         'lat',
         'lng',
+        'qty_to_mp',
         'added_to_mp',
         'active',
     ];

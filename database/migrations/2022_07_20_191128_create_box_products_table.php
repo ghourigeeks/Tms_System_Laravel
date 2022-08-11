@@ -15,6 +15,7 @@ class CreateBoxProductsTable extends Migration
     {
         Schema::create('box_products', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('box_id');
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('qty');
             $table->boolean('active')->nullable()->default(1)->comment('null = inactive and 1 = active'); 

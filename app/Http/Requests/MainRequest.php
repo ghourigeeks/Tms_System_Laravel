@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
+
+// use App\Models\Client;
 class MainRequest extends FormRequest
 {
    
@@ -41,15 +43,29 @@ class MainRequest extends FormRequest
                     ];
                 break;
 
-                case "fetchPackages":
-                    return ['client_id'  => 'required|numeric'];  
-                break;
+                case "updateProfile":
 
-                case "fetchPaymentMethods":
-                    return  [
-                        'client_id'     => 'required|numeric',
-                        'password'      => 'required|min:8',
-                    ];  
+                    $con    =   [ 
+                        'client_id'      => 'required|numeric',
+                        'fullname'       => 'required|min:3|regex:/^([^0-9]*)$/',
+                        'username'       => ['required', Rule::unique('clients')->ignore($this->client_id)],
+                        'email'          => ['required','email', Rule::unique('clients')->ignore($this->client_id)],
+                        'phone_no'       => ['required', 'digits:11','numeric', Rule::unique('clients')->ignore($this->client_id)],
+                        'address'        => 'required|min:3',
+                        'region_id'      => 'required|numeric',
+                        'country_id'     => 'required|numeric',
+                        'state'          => 'required|min:3',
+                        'city'           => 'required|min:3',
+                    ];
+                    if(!empty($this->password)){
+                        $con['password']     =  'required|min:8';
+                    }
+
+                    if(!empty($this->profile_pic)){
+                        $con['profile_pic']     = 'required|image|mimes:jpeg,png,jpg,gif|max:2048';
+                    }
+                    return $con; 
+                    
                 break;
 
                 default:

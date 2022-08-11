@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
 use Throwable;
 class Handler extends ExceptionHandler
 {
@@ -32,13 +33,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-       
-
-        // return $request->expectsJson()
-        //     ? response()->json(['error'=> $exception->getMessage()])
-        //     : response()->json(['error'=> $exception->getMessage()]);
-
-
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             if($request->ajax()){
                 return response()->json(['error'=> "$exception->getMessage()"]);
@@ -49,13 +43,32 @@ class Handler extends ExceptionHandler
 
         if ($this->isHttpException($exception)) {
             if($request->ajax()){
+                // return "Asdfasdf";
+
                 return response()->json(['error'=> "Invalid route!!!"]);
+                // return response()->json(['error'=> "Invalid route!!!"]);
             }else{
-                return redirect()->back()->with('permission',"Invalid route!!!");
+                $url = url()->current();
+                $ch = "api";
+                if(strpos($url, $ch) !== false){
+                    
+                    return response()->json([
+                        'status'    => "failed",
+                        'msg'       => "Invalid API route!!!",
+                        "data"      => []
+                    ], 404);
+                    // return response()->json(['error'=> "Invalid API route!!!"]);
+                }else{
+                    return redirect()->back()->with('permission',"Invalid route!!!");
+                }
             }
         }
+
+
         return parent::render($request, $exception);
     }
+
+
     public function register()
     {
         //
