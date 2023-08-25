@@ -13,8 +13,8 @@
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
                             @can('role-create')
-                                <a  href="{{ route('roles.create') }}" class="btn btn-primary btn-xs ml-auto">
-                                <i class="fa fa-plus"></i>New</a>
+                                <a  href="{{ route('roles.create') }}" class="btn btn-dark btn-xs ml-auto">
+                                <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
                     </div>

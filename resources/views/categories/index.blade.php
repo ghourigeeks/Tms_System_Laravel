@@ -13,7 +13,7 @@
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
                             @can('category-create')
-                                <a  href="{{ route('categories.create') }}" class="btn btn-primary btn-xs ml-auto">
+                                <a  href="{{ route('categories.create') }}" class="btn btn-dark btn-xs ml-auto">
                                 <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
@@ -24,12 +24,14 @@
                                 <thead>
                                     <tr>
                                         <th width="5%">#</th>
-                                        <th>Name</th>
+                                        <th width="50%">Category name</th>
                                         <th width="8%"> Active</th>
                                         <th width="10%" >Action</th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                            
+                                <tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -38,8 +40,12 @@
         </div>
     </div>
 
+        
+
+
     <script>
         $(document).ready(function () {  
+
             var t = $('#myTable').DataTable({
                     "aaSorting": [],
                     "processing": true,
@@ -55,7 +61,7 @@
 
                     ]
                 });
-            t.on( 'order.dt search.dt', function () {
+                t.on( 'order.dt search.dt', function () {
                 t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
                     cell.innerHTML = i+1;
                 } );

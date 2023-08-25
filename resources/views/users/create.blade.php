@@ -14,8 +14,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Add @yield('title')</h4>
-                            <a  href="{{ route('users.index') }}" class="btn btn-primary btn-xs ml-auto">
+                           <h4 class="card-title">Add @yield('title')</h4><span style="margin-left:10px" class="loader"></span>
+                            <a  href="{{ route('users.index') }}" class="btn btn-dark btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                             
@@ -96,7 +96,7 @@
                                         <div class="avatar avatar-xl add_image" id="kt_profile_avatar">
                                             
                                             <img id="blah" src="{{ asset('/uploads/no_image.png') }}" class="avatar-img rounded-circle "  alt="your image"/>
-                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Image">
+                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-dark btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Image">
                                                 <i class="fa fa-pen icon-sm text-muted"></i>
                                                 {!! Form::file('profile_pic', array('id'=>'profile_pic','accept'=>'.png, .jpg, .jpeg')) !!}
                                             </label>
@@ -113,7 +113,7 @@
                                 <div class="row">
                                     
                                     <div class="col-lg-12 text-right">
-                                        <button type="submit" class="btn btn-primary btn-sm mr-2">Save</button>
+                                        <button type="submit" class="btn btn-dark btn-sm mr-2">Save</button>
                                         <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
                                     </div>
                                 </div>
@@ -158,19 +158,24 @@
                     cache: false,
                     contentType: false,
                     processData: false,
+                    beforeSend:function(){
+                        $('.loader').show();
+                    },
                     success: (data) => {
                         if(data.success){
                             this.reset();
                             toastr.success(data.success);
+                            $('.loader').hide();
                         }
                     },
                     error: function(data) {
                         var txt         = '';
-                        // console.log(data.responseJSON.errors[0])
+                        console.log(data.responseJSON.errors[0])
                         for (var key in data.responseJSON.errors) {
                             txt += data.responseJSON.errors[key];
                             txt +='<br>';
                         }
+                        $('.loader').hide();
                         toastr.error(txt);
                     }
                 });

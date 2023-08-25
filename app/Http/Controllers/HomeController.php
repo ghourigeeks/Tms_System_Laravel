@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Revision;
+use App\Models\Contest;
+use App\Models\Client;
+use App\Http\Controllers\Controller;
+
 class HomeController extends Controller
 {
     /**
@@ -19,30 +26,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        $date               = date("Y-m-d");
-        $entity             = "daily_report";
-        $rec['oSell']       = 0;
-        $rec['cSell']       = 0;
-        $rec['oPurchase']       = 0;
-        $rec['cPurchase']       = 0;
+        $orders     = Order::count();
+        $revisions  = Revision::count();
+        $users      = User::count();
+        $clients    = Client::count();
+        $contests   = Contest::count();
+        $payments   = Order::all()->sum('total_payment');
 
-        // $rec['oSell']       = DB::table('customer_has_transactions')
-        //                         ->whereDate('customer_has_transactions.created_at','<', $date)
-        //                         ->sum('debit');
-
-        // $rec['cSell']       = DB::table('customer_has_transactions')
-        //                         ->whereDate('customer_has_transactions.created_at', $date)
-        //                         ->sum('debit');
-
-        // $rec['oPurchase']   = DB::table('company_has_transactions')
-        //                         ->whereDate('company_has_transactions.created_at','<', $date)
-        //                         ->sum('debit');
-
-        // $rec['cPurchase']   = DB::table('company_has_transactions')
-        //                         ->whereDate('company_has_transactions.created_at', $date)
-        //                         ->sum('debit');
-
-        return view('home',compact('rec'));
+        return view('home',compact('orders','users','payments','clients','contests','revisions'));
 
         // return view('home');
     }

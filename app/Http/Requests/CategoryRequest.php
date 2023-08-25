@@ -16,23 +16,20 @@ class CategoryRequest extends FormRequest
 
       if((isset($this->action)) && (($this->action) == "store") ){
         return [
-            'name'        => 'required|min:3|unique:categories,name',
+            'name'       => 'required|min:3|unique:categories,name',
         ];
       }else{
         return [
-            'name'        => 'required|min:3',
+            'name'       => ['min:3','required'],
         ];
-      }
-        
-       
+      }   
     }
 
     public function messages()
     {
         return [
-            'name.required'         => 'Category name is required',
-            'name.min'              => 'Category name must be three or more character long',
-            
+            'name.required'          => 'The Category name is required',
+            'name.min'               => 'The Category name must be three or more character long',
         ];
     }
 }

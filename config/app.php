@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Nerdsroot'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8000'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'asset_url' => env('ASSET_URL','http://localhost:8000'),
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
+
 
         /*
          * Package Service Providers...
@@ -229,6 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

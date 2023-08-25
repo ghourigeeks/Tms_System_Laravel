@@ -41,7 +41,7 @@ class RoleController extends Controller
                 ->addColumn('action',function($data){
                 return 
                         '<div class="btn-group btn-group">
-                            <a class="btn btn-info btn-xs" href="roles/'.$data->id.'/edit" id="'.$data->id.'">
+                            <a class="btn btn-dark btn-xs" href="roles/'.$data->id.'/edit" id="'.$data->id.'">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </div>';

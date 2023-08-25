@@ -6,8 +6,11 @@
 
     <title>{{ config('app.name') }}</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{ asset('assets/img/icon.ico') }}" type="image/x-icon"/>
-	<!-- Fonts and icons -->
+	<link rel="icon" href="{{ asset('assets/img/icon.svg') }}" type="image/x-icon"/>
+	<meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+	<!-- Fonts and icons ---->
 	<script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
 	<script src="{{asset('libs/jquery.min.js')}}" ></script>
 	<script>
@@ -20,14 +23,14 @@
 		});
 	</script>
 
-	<!-- CSS Files -->
-	<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+	<!-- CSS Files ---->
+	<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> ---->
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/azzara.min.css') }}">
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<!-- <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}"> -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.all.js" ></script> -->
+	<!-- CSS Just for demo purpose, don't include it in your project ---->
+	<!-- <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}"> ---->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.all.js" ></script> ---->
 	<script src="{{ asset('assets/js/sweetalert2.all.js') }}" ></script>
 	<style>
 		.span_danger{
@@ -55,19 +58,118 @@
 	      .loader{
 	        display: none;
 	      }
+		.page-item.active .page-link {
+		    z-index: 1;
+		    color: #fff;
+		    background-color: #1a1a1a !important;
+		    border-color: #1a1a1a !important;
+		}
+		.sidebar .nav>.nav-item a i {
+			margin-right: 15px;
+			width: 25px;
+			color: #000;
+			text-align: center;
+			vertical-align: middle;
+			float: left;
+		}
+		.sidebar .nav>.nav-item.active a i {
+		    color: #D63048;
+		}	     
+		.sidebar .nav>.nav-item a:focus i, .sidebar .nav>.nav-item a:hover i {
+   	 		color: #D63048!important;
+		} 
+		.sidebar .nav>.nav-item a[data-toggle=collapse][aria-expanded=true]:before, .sidebar .nav>.nav-item.active:hover>a:before, .sidebar .nav>.nav-item.active>a:before {
+		    background: #D63048;
+		    opacity: 1!important;
+		    position: absolute;
+		    z-index: 1;
+		    width: 3px;
+		    height: 100%;
+		    content: '';
+		    left: 0;
+		    top: 0;
+		}
+		select{
+			padding-bottom: 5px !important;
+		    padding-top: 5px !important;
+		}
+		/* The switch - the box around the slider */
+		.switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 50px;
+		  height: 25px;
+		}
+
+		/* Hide default HTML checkbox */
+		.switch input {
+		  opacity: 0;
+		  width: 0;
+		  height: 0;
+		}
+
+		/* The slider */
+		.slider {
+		  position: absolute;
+		  cursor: pointer;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background-color: #df4759;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		.slider:before {
+		   position: absolute;
+		   content: "";
+		   height: 15px;
+		   width: 15px;
+		   left: 6px;
+		   bottom: 5px;
+		   background-color: white;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		input:checked + .slider {
+		  background-color: #42ba96;
+		}
+
+		input:focus + .slider {
+		  box-shadow: 0 0 1px #42ba96;
+		}
+
+		input:checked + .slider:before {
+		  -webkit-transform: translateX(26px);
+		  -ms-transform: translateX(26px);
+		  transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+		  border-radius: 34px;
+		}
+
+		.slider.round:before {
+		  border-radius: 50%;
+		}
+
 	</style>
 </head>
 <body>
 	<div class="wrapper">
 		<!--
 			Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
-		-->
+		---->
 		<div class="main-header" data-background-color="light-blue">
-			<!-- Logo Header -->
-			<div class="logo-header">
+			<!-- Logo Header ---->
+			<div style="background:#000 !important;" class="logo-header">
 				
 				<a href="{{url('/home')}}" class="logo">
-					<img src="{{ asset('assets/img/logo.png') }}" alt="navbar brand" class="navbar-brand" style= "    width: 50%;">
+					<img src="{{ asset('assets/img/logo.png') }}" alt="navbar brand" class="navbar-brand" style= "width: 50%;
+					margin-top: -20px;">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -81,11 +183,11 @@
 					</button>
 				</div>
 			</div>
-			<!-- End Logo Header -->
+			<!-- End Logo Header ---->
 
-			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-light bg-white shadow-sm  navbar-expand-lg">
-			<!-- navbar navbar-expand-md navbar-light bg-white shadow-sm -->
+			<!-- Navbar Header ---->
+			<nav style="background:#1a1a1a !important;" class="navbar navbar-header navbar-light bg-white shadow-sm  navbar-expand-lg">
+			<!-- navbar navbar-expand-md navbar-light bg-white shadow-sm ---->
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<!-- <form class="navbar-left navbar-form nav-search mr-md-3">
@@ -97,7 +199,7 @@
 								</div>
 								<input type="text" placeholder="Search ..." class="form-control">
 							</div>
-						</form> -->
+						</form> ---->
 					</div>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 					
@@ -121,7 +223,7 @@
 										@endif
 										
 										<?php $editLink = "users/".Auth::user()->id ."/edit";  ?>
-										<!-- users/{{Auth::user()->id}}/edit -->
+										<!-- users/{{Auth::user()->id}}/edit ---->
 
 										<div class="u-text">
 											<h4>{{Auth::user()->name}}</h4>
@@ -149,7 +251,7 @@
 					</ul>
 				</div>
 			</nav>
-			<!-- End Navbar -->
+			<!-- End Navbar ---->
 		</div>
 
 		<?php 
@@ -167,7 +269,7 @@
 				}
 			}
 		?>
-		<!-- Sidebar -->
+		<!-- Sidebar ---->
 		<div class="sidebar">
 			
 			<div class="sidebar-background"></div>
@@ -206,98 +308,65 @@
 							</a>
 						</li>
 
-						<li class="nav-item @if('clients' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('clients')}}">
-								<i class="fas fa-users"></i>
-								<p>Clients</p>
+						<li class="nav-item @if('orders' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/orders')}}">
+								<i class="fab fa-first-order"></i>
+								<p>Orders</p>
 							</a>
 						</li>
 
-
-						<li class="nav-item @if('boxes' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('boxes')}}">
-								<i class="fas fa-box"></i>
-								<p>Boxes</p>
+						<li class="nav-item @if('revisions' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/revisions')}}">
+								<i class="fa fa-history"></i>
+								<p>Revisions</p>
 							</a>
 						</li>
 
-
-						<li class="nav-item @if('products' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a href="{{url('products')}}">
-								<i class="fab fa-product-hunt"></i>
-								<p>Products</p>
+						<li class="nav-item @if('contests' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/contests')}}">
+								<i class="fa fa-trophy"></i>
+								<p>Contests</p>
 							</a>
 						</li>
 
+                         <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">CUSTOMIZE</h4>
+						</li>
+						@if(Auth::user()->id == 1)
+						
 						<li class="nav-item @if('categories' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('categories')}}">
+							<a  href="{{url('/categories')}}">
 								<i class="fas fa-list-alt"></i>
 								<p>Categories</p>
 							</a>
 						</li>
 
-
-						<li class="nav-item @if('ibeacons' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('ibeacons')}}">
-								<i class="fas fa-microchip"></i>
-								<p>Ibeacons</p>
+						<li class="nav-item @if('clients' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/clients')}}">
+								<i class="fas fa-user"></i>
+								<p>Clients</p>
 							</a>
-						</li>
-
-						<li class="nav-item @if('complaints' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/complaints')}}">
-								<i class="fas fa-envelope"></i>
-								<p>Complaints</p>
-							</a>
-						</li>
-
-
-
-
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Customize</h4>
 						</li>
 						
+						@endif
 
-						<li class="nav-item @if('payments' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('payments')}}">
-								<i class="fab fa-cc-paypal"></i>
-								<p>Payments Methods</p>
-							</a>
-						</li>
-
-						<li class="nav-item @if('packages' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/packages')}}">
-								<i class="fas fa-box"></i>
-								<p>Packages</p>
-							</a>
-						</li>
-
-						<li class="nav-item @if('regions' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/regions')}}">
-								<i class="fas fa-globe"></i>
-								<p>Region</p>
-							</a>
-						</li>
-
-					   <li class="nav-item @if('countries' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('/countries')}}">
-								<i class="fas fa-flag"></i>
-								<p>Country</p>
+						<li class="nav-item @if('leaves' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/leaves')}}">
+								<i class="fa fa-home"></i>
+								<p>Leaves</p>
 							</a>
 						</li>
 
 
-						<li class="nav-item @if('faqs' == url_explode(request()->path()) ) {{'active'}} @endif">
-							<a  href="{{url('faqs')}}">
-								<i class="fa fa-question-circle"></i>
-								<p>FAQ's</p>
+                         <li class="nav-item @if('feedbacks/create' == url_explode(request()->path()) ) {{'active'}} @endif">
+							<a  href="{{url('/feedbacks/create')}}">
+								<i class="fas fa-comments"></i>
+								<p>Feedback</p>
 							</a>
 						</li>
-
 												
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
@@ -325,7 +394,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- End Sidebar -->
+		<!-- End Sidebar ---->
 
 		<div class="main-panel">
 			<div class="content">
@@ -334,7 +403,7 @@
 		</div>
 	</div>
 </div>
-<!--   Core JS Files   -->
+<!--   Core JS Files   ---->
 <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
 <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
@@ -343,50 +412,50 @@
 <script src="{{asset('libs/datatable/dataTables.bootstrap4.min.js')}}" defer></script>
 <script src="{{asset('libs/jquery.validate.js')}}" defer></script>
 
-<!-- jQuery UI -->
+<!-- jQuery UI ---->
 <script src="{{ asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script> -->
+<!-- <script src="{{ asset('assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script> ---->
 
-<!-- jQuery Scrollbar -->
+<!-- jQuery Scrollbar ---->
 <script src="{{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
-<!-- Moment JS -->
-<!-- <script src="{{ asset('assets/js/plugin/moment/moment.min.js') }}"></script> -->
+<!-- Moment JS ---->
+<!-- <script src="{{ asset('assets/js/plugin/moment/moment.min.js') }}"></script> ---->
 
-<!-- Chart JS -->
-<!-- <script src="{{ asset('assets/js/plugin/chart.js/chart.min.js') }}"></script> -->
+<!-- Chart JS ---->
+<!-- <script src="{{ asset('assets/js/plugin/chart.js/chart.min.js') }}"></script> ---->
 
-<!-- jQuery Sparkline -->
-<!-- <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script> -->
+<!-- jQuery Sparkline ---->
+<!-- <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script> ---->
 
-<!-- Chart Circle -->
-<!-- <script src="{{ asset('assets/js/plugin/chart-circle/circles.min.js') }}"></script> -->
+<!-- Chart Circle ---->
+<!-- <script src="{{ asset('assets/js/plugin/chart-circle/circles.min.js') }}"></script> ---->
 
-<!-- Datatables -->
-<!-- <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script> -->
+<!-- Datatables ---->
+<!-- <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script> ---->
 
-<!-- Bootstrap Notify -->
-<!-- <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> -->
+<!-- Bootstrap Notify ---->
+<!-- <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> ---->
 
-<!-- Bootstrap Toggle -->
-<!-- <script src="{{ asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script> -->
+<!-- Bootstrap Toggle ---->
+<!-- <script src="{{ asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script> ---->
 
-<!-- jQuery Vector Maps -->
+<!-- jQuery Vector Maps ---->
 <!-- <script src="{{ asset('assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script> -->
+<script src="{{ asset('assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script> ---->
 
-<!-- Google Maps Plugin -->
-<!-- <script src="{{ asset('assets/js/plugin/gmaps/gmaps.js') }}"></script> -->
+<!-- Google Maps Plugin ---->
+<!-- <script src="{{ asset('assets/js/plugin/gmaps/gmaps.js') }}"></script> ---->
 
-<!-- Sweet Alert -->
+<!-- Sweet Alert ---->
 <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
-<!-- Azzara JS -->
+<!-- Azzara JS ---->
 <script src="{{ asset('assets/js/ready.min.js') }}"></script>
 
-<!-- Azzara DEMO methods, don't include it in your project! -->
+<!-- Azzara DEMO methods, don't include it in your project! ---->
 <!-- <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
-<script src="{{ asset('assets/js/demo.js') }}"></script> -->
+<script src="{{ asset('assets/js/demo.js') }}"></script> ---->
 
 
     <script type="text/javascript">

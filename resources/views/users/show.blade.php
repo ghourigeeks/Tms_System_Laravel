@@ -10,7 +10,7 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">@yield('title')</h4>
-                            <a  href="{{ route('users.index') }}" class="btn btn-primary btn-xs ml-auto">
+                            <a  href="{{ route('users.index') }}" class="btn btn-dark btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </div>
@@ -42,11 +42,33 @@
                                             <th>Role</th>
                                             <td>{{$data->rn}}</td>
                                         </tr>
-                                       
+
+                                        <tr>
+                                            <th>Last seen</th>
+                                            <td>
+                                                @if($data->last_seen != null)
+                                            {{ \Carbon\Carbon::parse($data->last_seen)->diffForHumans() }}
+                                            @else
+                                                
+                                            @endif
+                                            </td>
+                                        </tr>
+
                                         <tr>
                                             <th>Status</th>
                                             <td>
-                                                @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )
+                                                @if(Cache::has('is_online' . $data->id))
+                                                    <span class="badge badge-success">Online</span>
+                                                @else
+                                                    <span class="badge badge-danger">Offline</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <th>Active</th>
+                                            <td>
+                                                @if((isset($data->active)) && ( ($data->active == 1)  ) )
                                                     <span class="badge badge-success">Active</span>
                                                 @else
                                                     <span class="badge badge-danger">Inactive</span>
@@ -80,7 +102,7 @@
                             <!-- <div class="desc">A man who hates loneliness</div> -->
                           
                             <div class="view-profile">
-                                <a href="#" class="btn btn-primary btn-block">View Image</a>
+                                <a href="#" class="btn btn-dark btn-block">View Image</a>
                             </div>
                         </div>
                     </div>

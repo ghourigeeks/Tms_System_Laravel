@@ -13,8 +13,8 @@
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Manage @yield('title')</h4>
                             @can('user-create')
-                                <a  href="{{ route('users.create') }}" class="btn btn-primary btn-xs ml-auto">
-                                <i class="fa fa-plus"></i>New</a>
+                                <a  href="{{ route('users.create') }}" class="btn btn-dark btn-xs ml-auto">
+                                <i class="fa fa-plus"></i> New</a>
                             @endcan
                         </div>
                     </div>
@@ -25,7 +25,8 @@
                                     <tr>
                                         <th width="5%">#</th>
                                         <th>Name</th>
-                                        <th>Email</th>
+                                        <th width="25%">Email</th>
+                                        <th width="16%">Status</th>
                                         <th>Role</th>
                                         <th width="8%">Active</th>
                                         <th width="10%">Action</th>
@@ -42,6 +43,8 @@
         </div>
     </div>
 
+        
+
 
     <script>
         $(document).ready(function () {  
@@ -57,6 +60,7 @@
                         {"data": "srno"},
                         {"data": "name"},
                         {"data": "email"},
+                        {"data": "lastseen"},
                         {"data": "rolename"},
                         {"data": "active",orderable:false,searchable:false},
                         {"data": "action",orderable:false,searchable:false}

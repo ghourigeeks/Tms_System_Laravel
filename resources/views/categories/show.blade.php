@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Show @yield('title')</h4>
-                            <a  href="{{ route('categories.index') }}" class="btn btn-primary btn-xs ml-auto">
+                            <a  href="{{ route('categories.index') }}" class="btn btn-dark btn-xs ml-auto">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </div>
@@ -25,27 +25,27 @@
                                 <div class="table-responsive">
                                     <table class="table dt-responsive">
                                         <tbody>
-
                                             <tr>
-                                                <th width="30%">Category</th>
+                                                <th width="30%">Category name</th>
                                                 <td>
-                                                    {{ isset($data->name) ? ($data->name) : ""}}
+                                                        {{ isset($data->name) ? ($data->name) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>Sub-category</th>
+                                                <th width="30%">Created at</th>
                                                 <td>
-                                                    @if(isset($data->subCategory) && count($data->subCategory) > 0)
-                                                        @foreach($data->subCategory as $key => $value)
-                                                            <span class="badge badge-primary">{{ isset($value->name) ? ($value->name) : ""}}</span>
-                                                        @endforeach
-                                                    @endif
+                                                        {{ isset($data->created_at) ? ($data->created_at) : ""}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>Status</th>
+                                                <th width="30%">Updated at</th>
                                                 <td>
-                                                
+                                                        {{ isset($data->updated_at) ? ($data->updated_at) : ""}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Active</th>
+                                                <td>
                                                     @if((isset($data->active)) && ( ($data->active == 1) || ($data->active == "Active") ) )
                                                         <span class="badge badge-success">Active</span>
                                                     @else
@@ -53,8 +53,6 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                            
-                                           
                                         </tbody>
                                     </table>
                                 </div>

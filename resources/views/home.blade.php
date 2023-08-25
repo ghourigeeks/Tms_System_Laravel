@@ -19,13 +19,13 @@
 										<div class="row align-items-center">
 											<div class="col-icon">
 												<div class="icon-big text-center icon-primary bubble-shadow-small">
-													<i class="fas fa-users"></i>
+													<i class="fab fa-first-order"></i>
 												</div>
 											</div>
 											<div class="col col-stats ml-3 ml-sm-0">
 												<div class="numbers">
-													<p class="card-category">Today Purchase</p>
-													<h4 class="card-title">{{ $rec['cPurchase'] }}</h4>
+													<p class="card-category">Total Orders</p>
+													<h4 class="card-title">{{ $orders ?? ''}}</h4>
 												</div>
 											</div>
 										</div>
@@ -38,61 +38,113 @@
 										<div class="row align-items-center">
 											<div class="col-icon">
 												<div class="icon-big text-center icon-info bubble-shadow-small">
-													<i class="far fa-newspaper"></i>
+													<i class="far fa-user"></i>
 												</div>
 											</div>
 											<div class="col col-stats ml-3 ml-sm-0">
 												<div class="numbers">
-													<p class="card-category">Today Sell</p>
-													<h4 class="card-title">{{ $rec['cSell'] }}</h4>
+													<p class="card-category">Total Employes</p>
+													<h4 class="card-title">{{ $users ?? '' }}</h4>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-md-3">
+							@if(Auth::user()->id == 1)
+                                <div class="col-sm-6 col-md-3">
 								<div class="card card-stats card-round">
 									<div class="card-body">
 										<div class="row align-items-center">
 											<div class="col-icon">
 												<div class="icon-big text-center icon-success bubble-shadow-small">
-													<i class="far fa-chart-bar"></i>
+													<i class="fas fa-user"></i>
 												</div>
 											</div>
 											<div class="col col-stats ml-3 ml-sm-0">
 												<div class="numbers">
-													<p class="card-category">Last Purchase</p>
-													<h4 class="card-title">{{ $rec['oPurchase'] }}</h4>
+													<p class="card-category">Total client</p>
+													<h4 class="card-title">{{ $clients ?? '' }}</h4>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-md-3">
+                            @else
+                            <div class="col-sm-6 col-md-3">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+										<div class="row align-items-center">
+											<div class="col-icon">
+												<div class="icon-big text-center icon-success bubble-shadow-small">
+													<i class="fa fa-trophy"></i>
+												</div>
+											</div>
+											<div class="col col-stats ml-3 ml-sm-0">
+												<div class="numbers">
+													<p class="card-category">Total Contests</p>
+													<h4 class="card-title">{{ $contests ?? '' }}</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            @endif
+							@if(Auth::user()->id == 1)
+                                <div class="col-sm-6 col-md-3">
 								<div class="card card-stats card-round">
 									<div class="card-body">
 										<div class="row align-items-center">
 											<div class="col-icon">
 												<div class="icon-big text-center icon-secondary bubble-shadow-small">
-													<i class="far fa-check-circle"></i>
+													<i class="fa fa-money-check"></i>
 												</div>
 											</div>
 											<div class="col col-stats ml-3 ml-sm-0">
 												<div class="numbers">
-													<p class="card-category">Last sell</p>
-													<h4 class="card-title">{{ $rec['oSell'] }}</h4>
+													<p class="card-category">Total Revenue</p>
+													<h4 class="card-title">{{ $payments ?? '' }}</h4>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+                            @else
+                            <div class="col-sm-6 col-md-3">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+										<div class="row align-items-center">
+											<div class="col-icon">
+												<div class="icon-big text-center icon-secondary bubble-shadow-small">
+													<i class="fa fa-history"></i>
+												</div>
+											</div>
+											<div class="col col-stats ml-3 ml-sm-0">
+												<div class="numbers">
+													<p class="card-category">Total Revisions</p>
+													<h4 class="card-title">{{ $revisions ?? '' }}</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            @endif
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="{{ asset('/sw.js') }}"></script>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
 @endsection

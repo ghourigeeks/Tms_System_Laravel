@@ -6,6 +6,8 @@ use Hash;
 use Auth;
 use DataTables;
 use App\Models\User;
+use Cache;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Spatie\Permission\Models\Role;
@@ -36,20 +38,28 @@ class UserController extends Controller
                                 'users.id',
                                 'users.name',
                                 'users.email',
+                                'users.last_seen',
                                 'users.active',
                                 'roles.name as rolename',
                             )
                     ->get();
 
-        return 
+         return 
             DataTables::of($data)
+                ->addColumn('lastseen',function($data){
+                    if(Cache::has('is_online' . $data->id)){
+                        return "Online";
+                    }else{
+                        return "Offline";
+                    }
+                })
                 ->addColumn('action',function($data){
                     return '
                     <div class="btn-group btn-group">
-                        <a class="btn btn-info btn-xs" href="users/'.$data->id.'">
+                        <a class="btn btn-dark btn-xs" href="users/'.$data->id.'">
                             <i class="fa fa-eye"></i>
                         </a>
-                        <a class="btn btn-info btn-xs" href="users/'.$data->id.'/edit" id="'.$data->id.'">
+                        <a class="btn btn-dark btn-xs" href="users/'.$data->id.'/edit" id="'.$data->id.'">
                             <i class="fas fa-pencil-alt"></i>
                         </a>
                         <button
@@ -60,7 +70,7 @@ class UserController extends Controller
                     </div>';
                 })
                 ->addColumn('srno','')
-                ->rawColumns(['srno','','action'])
+                ->rawColumns(['srno','lastseen','','action'])
                 ->make(true);
 
     }
